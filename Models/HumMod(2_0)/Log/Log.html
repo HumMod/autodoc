@@ -20,7 +20,39 @@
 <a href='../Model.html'><img src='../../Back.PNG'></a>
 
 <p>
-2012-07-01
+2012-07-08 HumMod (v2.0.19). Pushing now. Insulin receptors
+are complete.
+
+Benchmarks. Stop insulin secretion. Blood levels of inulin
+fall to about 40% of control at 10 hours. Severe ketoacidosis
+at 1 day.
+
+I am now completely redoing control of respiration to get
+CSF into the model and to get acceptable metabolic and CO2
+responses.
+
+<p>
+2012-07-04 General and hepatic insulin receptors with
+general, hepatic and renal insulin degradation. Note that
+the liver sees portal vein insulin concentration. Receptors
+are visible at Hormones | Insulin | Receptors.
+
+<p>
+Insulin clearance is the sum of net liver binding, net
+general binding and renal degradation. Visible at
+Hormones | Insulin | Circulating.
+
+<p>
+Insulin's organ effects are a function of fractional
+binding.
+
+<p>
+2012-07-01 HumMod (v2.0.19). Fuel uses organ plasma flow in
+the denominator of some ratios. It also uses values derived
+from O2 use in similar denominators. So when the model is
+close to or in mortis, the organ flow or O2 use stops and
+we get a divide by zero. Trapped this condition in all
+twelve major organs.
 
 <p>
 2012-06-30 Starting to install insulin receptors.
