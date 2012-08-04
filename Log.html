@@ -18,7 +18,59 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
-2012-08-04
+2012-08-04 HumModXML version bumped to 2.0.27. Kidney
+get a panel tree modification because the nephron stuff
+was buried too deep. Brought it up one level. Visible
+at Organs | Kidney | Organ or Nephrons.
+
+<p>
+HumModXML. Kidney gets a new panel showing details of
+kidney O2 physiology. Visible at Organs | Kidney.
+
+<p>
+HumModXML cleaned up the calculation and display of
+EPO secretion. The XML is at Structure \ EPO \
+EPOSecretion. The display is at Hormones | EPO - the
+secretion box.
+
+<p>
+2012-08-04 ModelSolver version bumped to v1.0.11
+after the random number generator was repaired.
+
+<p>
+The normal distribution mean has a positive bias
+-- because I was summing 7 samples and dividing
+by 6 to get the mean. Code is in Var_NormalDistribution.
+ModelSolver\Docs\Code\Model Solver Notes - Random
+Numbers has documentation and screen grabs.
+
+<p>
+2012-08-04 InteractiveController bumped to
+v1.1.9 after a repair. Controller will ask
+the solver for variable, integral, implicit
+and curve rosters. When Advanced is click, it
+makes a dialog tab for each of these rosters.
+In the Strucutes list box, it selects the first
+structure. But a model with no entries in one
+of the four roster listed above has no first
+structure to select and the controller was
+throwing an exception. Now it selects the first
+structure only when there is a first strucute
+to select.
+
+<p>
+2012-08-04 ModelSolver version bumped to v1.0.10
+after solver got two repairs.
+
+<p>
+Variable WhiteNoise had no default values
+for lower and upper limits. Now default lower
+limit is 0 and default upper limit is 1.
+
+<p>
+Variable NormalDist had no default values 
+for mean and standard deviation. Now default
+mean is 0 and default standard deviation is 1.
 
 <p>
 2012-08-04 HumModRepository. Moved the log (this
