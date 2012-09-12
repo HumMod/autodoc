@@ -18,6 +18,84 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-09-12 HumMod version bumped to 2.0.32.
+
+<p>
+First the problem -- as logged yesterday, HumMod
+produces large amounts of lactic acid during work,
+develops a fatal acidosis and fibrillates. The model
+starts going anaerobic at skeletal and respiratory
+pO2's of 20 Torr.
+
+<p>
+But there is some very good data available --
+using MRI to monitor myogloblin desaturation --
+that indicates that skeletal muscle pO2 goes
+very low (3 to 5 Torr) with only moderate workload
+and no anaerobic metabolism.
+
+<p>
+I've documented this in Structure\SkeletalMuscle\
+SkeletalMuscle-Flow.REF.
+
+<p>
+The correction was to start anaerobic metabolism
+when venous pO2 falls below 8 Torr. Note that
+venous pO2 might be a couple of Torr greater than
+cytosolic due to a large but still finite diffusing
+capacity. Corrected curves are visible in Structures\
+SkeletalMuscle\SkeletalMuscle-Flow and the comparable
+RespiratoryMuscle DES file.
+
+<p>
+2012-09-11 HumMod version bumped to 2.0.31.
+
+<p>
+First, the problem -- as pointed out by David Julian
+(thank you, David). When the daily planner was turned
+on, HumMod would die in V-Fib at about 8:30 AM on the
+first day, about 1/2 hour into exercise. The exercise
+was 50W but was massively anaerobic. HumMod stops
+bike and treadmill exercise when conditions become
+intolerable, but work continues no-matter-what. This
+allows me to shake down the model. So [Lac-] increased
+to 30+ mEq/L and HumMod fibrillated as it should.
+
+<p>
+The work session was massively anaerobic because the
+increase in cardiac output was inadequate. This was
+puzzling because HumMod can do 50W of bike with no
+trouble. BUT, HumMod is standing when doing work and is
+usually recumbent when on the bike. The problem, then,
+was that HumMod had accurate pooling when standing
+very quietly but this pooling also continued during
+muscular activity. Standing plus activity was not
+accurately modeled. My bad.
+
+<p>
+Loring Rowell has gone into excellent detail in
+Human Cardiovascular Control.
+
+<p>
+Pollact, A.A. and E.H.Wood. Venous pressure in the
+saphenous vein at the ankle in man during exercise
+and changes in posture. J.Appl.Physiol. 1:649, 1949.
+
+<p>
+There are some other references also.
+
+<p>
+Structure VenousValves replaces structure LegMusclePumping.
+Structure BVSeqVeins gets some major edits. The panel in
+orthostatics that shows sequestered blood volume in veins
+gets considerable more detail.
+
+<p>
+Note that 2.0.31 still cannot make it through one day of
+daily planner. I'll fix that tommorrow and put it in
+2.0.32.
+
+<p>
 2012-09-06 A couple of pushes had incorrect version
 numbers in the commit comments. Here is an accurate
 list of versions for this date.
@@ -36,9 +114,9 @@ Note that I have correct some previous erroneous entries
 in this log.
 
 <p>
-2012-08-13 HumMod version will go to v2.0.31
-with a major rewrite of the basic circulatory
-physiology and applied math. More on this later.
+2012-08-13 HumMod version will go to v2.0.32 or greater
+with a major rewrite of the basic circulatory physiology
+and applied math. More on this later.
 
 <p>
 2012-08-10 ModelSolver version bumped to v1.0.13
