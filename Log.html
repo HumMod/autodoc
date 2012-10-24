@@ -18,6 +18,50 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-10-24. HumModRepository. The 'Log' cloud button
+on the home page is now smaller - indicating that it
+is a more minor selection than the other selections.
+
+<p>
+2012-10-24. HumModRepository. A variety of spreadsheets
+are now relevant. They are now listed and linked separately
+on the 'Normal Values' home page.
+
+<p>
+Zoho is used to display the Xcel spreadsheets. A rather
+complex URL is used. It begins with
+
+<p class='Indent'>
+  https//sheet.zoho.com/view.do?
+
+<p>
+And continues with
+
+<p class='Indent'>
+  url=github.com/HumMod/autodoc/Data/NormalValues/'Sheet Name'.xlsx
+
+<p>
+2012-10-24. HumModRepository. Data. CO2Transport. This Web page
+describes a submodel of CO2 transport in blood which will be
+embedded in HumMod to get accurate values of [HCO3] as a funcion
+of pCO2 and [SID]. The model is
+
+<p class="Indent">
+[HCO3] = K * (pCO2/(p50 + pCO2))
+<br>
+K = k' * [SID]
+<br>
+p50 = 32
+
+<p>
+where K is a linear function of [SID]. We fit k' to the appropriate
+data sets. Then during solutions, [HCO3] is calculated as a function
+of the prevailing pCO2 and [SID].
+
+<p>
+2012-10-24.
+
+<p>
 2012-10-19. Version to 2.0.34 with addition of
 metabolic units concept to O2 uptake. Structure is
 in LungGases\MetabolicUnits (including a REF).

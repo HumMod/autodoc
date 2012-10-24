@@ -8,5 +8,7 @@ Smallest use 12pt.
 
 And there is an intermediate size that uses 14pt.
 
+The 'Log' cloud button uses 16 pt -- as a minor
+selection.
 
 End
