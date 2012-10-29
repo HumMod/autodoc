@@ -18,6 +18,31 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-10-29. Repository now displays Excel workbooks as HTML, rather
+than pushing the xlsx through zoho.com.
+
+<p>
+2012-10-29. David Julian has pointed out that it is possible to
+create an exercise protocol where the subject goes until he
+fibrillates rather than just quitting. Also the toleraable
+exercise durations were way, way too long. So there were a couple
+of things wrong. Now fixed. Further details are in Structure\Exercise
+Exercise-Control.REF and Exercise-Motivation.REF.
+
+<p>
+2012-10-29. HumMod 2.0.35. CO2 dissociation submodel is installed.
+Relevant structures are located in Structure\CO2. The algorithm is
+implemented in CO2_pCO2_To_[HCO3] and CO2_[HCO3]_To_pCO2. CO2Blood
+is a wrapper for blood work.
+
+<p>
+The CO2 dissociation curve is displayed in relevant places using
+the ShowMap display object. The algorithm is presented by the [i]
+button. Blood work is displayed at Respiration | CO2 | Arteries
+and Veins. There is also a CO2 calculator on this pop down. Major
+organ CO2 dissociation is visible at Organs | 'Organ Name' | CO2.
+
+<p>
 2012-10-24. HumModRepository. The 'Log' cloud button
 on the home page is now smaller - indicating that it
 is a more minor selection than the other selections.
@@ -66,9 +91,6 @@ of the prevailing pCO2 and [SID].
 
 <p>
 2012-10-24. Repository. Reference Dot.png corrected to Dot.PNG.
-
-<p>
-2012-10-24.
 
 <p>
 2012-10-19. Version to 2.0.34 with addition of
