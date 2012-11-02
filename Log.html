@@ -18,6 +18,96 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-11-02. Total, endocrine, alpha cell, beta cell,
+delta cell, other cell and exocrine blood flow. XML
+is at Structure\Pancreas and then Pancreas-Flow. Visible
+at Organs | Pancreas | Circulation.
+
+<p>
+2012-11-02. Need a conductance scaler obtained from the
+GI tract to scale the adrenal gland and pancreas. Its
+name is Conductance_X_Normal. XML in GITract-Flow.
+Visible under Organs at GI Tract | Circulation and also
+at the Adrenal Gland and Pancreas.
+
+<p>
+2012-11-02. The hemodynamics of the portal vein, hepatic
+artery and hepatic vein are now visible at Circulation |
+Blood Vessels | Splanchnic Veins. Portal vein blood flow
+and constituents are now visible at Organs | ... Portal
+Vein.
+
+<p>
+2012-11-02. A blood chemistry consult must now be requested
+rather than being automatic. Of course, a sample is needed. 
+
+<p>
+2012-11-02. HumMod v2.0.37. Gave [Glucagon] additionalal physical
+units of pMol/L. XML in Structure\Glucagon. Visible in Hormones
+| Glucagon. 
+
+<p>
+2012-11-01. Starvation simulations indicate that additional
+precision is needed at insulin and glucagon into the portal
+circulation. I'll build this on a detailed pancreas circulatory
+system.
+
+<p>
+But to warm up, I built a detailed adrenal gland circulation.
+XML is at Structure\AdrenalGland. Visible at Organs | Adrenal
+Gland.
+
+<p>
+2012-11-01. By the second day of starvation, insulin mass
+(and [Insulin]) have gone negative. Needs some work on hepatic
+insulin receptor binding. Loss of physiology out at the edges.
+Next.
+
+<p>
+2012-11-01. Blood chemistry is now displayed as the result of
+a blood sample. There is a separate panel for blood gases.
+XML in Structure\BloodGases. Visible under Diagnosis.
+
+<p>
+2012-11-01. Some submenus seemed too deep to me and this was a
+pain. Specifically moved up GI Lumen and Nephrons to the next
+higher menu -- Organs. Show child-like dependence using elipses
+(...).
+
+<p>
+2012-10-30. Absoption of water from the gut lumen could continue
+all the way down to a negative volume. Added limits that stop
+absorption when the gut is empty. XML at Structure\GILumen and
+then GILumenH2O.
+
+<p>
+Now, as the H2O volume in the gut decreases, the osmolarity
+produced by residual fiber goes up. And if the fiber washes
+out (future work) absorption, vomitus and diarrhea stop as
+gut H2O volume approaches a small value near 0.
+
+<p>
+2012-10-30. Added functionality to bladder, including a request
+for urine analysis followed by display of results. The XML is
+located at Structure\UrineAnalysis with major edits at
+Structure\Bladder. Visible at Organs | Bladder and Diagnosis |
+Urine Analysis.
+
+<p>
+Bladder is now scaled and properly initialized.
+
+<p>
+2012-10-30. The cleanest way to model fasting and starvation is
+to go to Lifestyle | Diet | Control, select fixed intake and set
+the fixed intake value to 0. Water intake will continue. To get
+complete deprivation, add a fixed water intake of 0.
+
+<p>
+2012-10-30. HumMod v2.0.36. XML in Structure\LungVeinO2 called
+the wrong function in converting [O2] to pO2. Fixed. This error
+was not a propagating error.
+
+<p>
 2012-10-29. Repository now displays Excel workbooks as HTML, rather
 than pushing the xlsx through zoho.com.
 
