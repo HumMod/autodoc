@@ -18,6 +18,70 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-11-03.
+
+<p>
+2012-11-03. Here is what I put in 
+InsulinReceptors-Liver.REF.
+
+<p>
+Hepatic insulin receptors can really scarf up
+the insulin. So net binding is always flow
+limited to some extent. This is very important
+when hepatic plasma flow is low.
+
+<p>
+So HumMod uses mass balance at hepatic insulin
+uptake. XML at Structure\Insulin\InsulinReceptors-Liver.
+Visible at Hormones | Insulin | Beta Cells | Insulin
+Receptors.
+
+<p>
+2012-11-03. Insulin concentration in the pool is now
+also available in pMol/L.
+
+<p>
+2012-11-03. Broke insulin formation into separate
+synthesis and secretion panels to provide more detailed
+information. No new XML. Visible at Hormones | Insulin
+| Beta Cells and then Synthesis and Secretion.
+
+<p>
+2012-11-03. HumMod now calculates and displays [Insulin]
+at the pancreas beta cells. This concentration modulates
+insulin secretion. XML at Structure\Pancreas\Insulin.
+Visible at Organs | Pancreas | Insulin and Hormones |
+Insulin | Beta Cells | Secretion.
+
+<p>
+2012-11-03. HumMod now calculates and displays [Glucagon]
+at the pancreas alpha cells. This concentration modulates
+glucagon secretion. XML at Structure\Pancreas\Glucagon.
+Visible at Organs | Pancreas | Glucagon and Hormones |
+Glucagon | Alpha Cells.
+
+<p>
+2012-11-02. Skeletal muscle metabolism did not respond
+(at all) to changes in posture -- because the logic in
+PostureEnergy was not properly coded. My bad. Fixed.
+Thanks to Drew for documenting this one.
+
+<p>
+2012-11-02. The correct descriptor of renal alpha
+agonism is Kidney-AlphaReceptors.Activity. Activity
+normal value is 1.0. Incorrect references (parameter
+stubs) were replaced in Structure\Nephrons\ProximalTubule\PT_Na
+and Structure\Nephrons\VasaRecta. And, thanks to Drew for
+this one.
+
+<p>
+2012-11-02. HumMod v2.0.38. The correct case for the
+system constant pi is 'Pi'. Replaced 'PI' with 'Pi'
+in Structure\Orthostatics\Hydrostatics. Tilt table
+is now functional. And, thanks again  to Drew for this
+one.
+
+<p>
 2012-11-02. Total, endocrine, alpha cell, beta cell,
 delta cell, other cell and exocrine blood flow. XML
 is at Structure\Pancreas and then Pancreas-Flow. Visible
