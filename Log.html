@@ -18,17 +18,63 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
-2012-11-03.
+2012-11-05.
+
+<p>
+2012-12-07. ModelSolver.EXE has been repaired and its
+version number bumped to 1.0.14.
+
+<p>
+Thanks to Drew for pointing out this problem. ModelSolver's
+XML parser did not process relative file names correctly.
+The offending code is in PFileManager.CS. I never liked this
+code and now it has been repaired using the proper .Net
+calls.
+
+<p>
+Fully qualified file name - Complete name from drive letter
+to file extension.
+
+<br>
+Relative name - name and location of a file relative to the
+current directory.
+
+<br>
+Current directory - a directory location stored by the
+operating system. By default it is the directory holding
+the executable code.
+
+<p>
+The HumMod XML parser should be able to handle both
+fully qualified and relative file names as specified by
+the <i>include</i> and <i>path</i> processing instructions.
+But it botched a relative name in the model solver's root
+directory. Fixed. My bad.
+
+<p>
+2012-11-05. HumMod v2.0.39. HumMod previously used a
+linear predictor to predict fatty acid vs. glucose use
+in each of the major organs. This worked OK with normal
+deliveries but not with unusual deliveries -- specifically
+brain ketoacid use during startvation.
+
+So I replaced this predictor with a non-linear one that
+is much better. The expense is that fatty acid preference
+is no longer working parameter. There is a detailed
+reference in Structure\FuelSelector. The new predictor
+is visible at 'Organ' | Fuel for each organ.
 
 <p>
 2012-11-03. Here is what I put in 
 InsulinReceptors-Liver.REF.
 
 <p>
+<i>
 Hepatic insulin receptors can really scarf up
 the insulin. So net binding is always flow
 limited to some extent. This is very important
 when hepatic plasma flow is low.
+<i>
 
 <p>
 So HumMod uses mass balance at hepatic insulin
