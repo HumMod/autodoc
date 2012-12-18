@@ -18,6 +18,39 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2012-12-18. ScriptedController version bumped to 2.0.10 with
+a try-catch construct added to StorageDumper.MakeRoster().
+
+<p>
+ScriptedController was throwing an <i>ArgumentOutOfRangeException</i>
+on the following sequence.
+
+<ul>
+
+<li>
+ScriptedController is executing a script and asks the ModelSolver
+to change a value or to advance the solution.
+
+<li>
+But a runtime error occurs and the expected results don't come back.
+
+<li>
+Instead, a run report comes back. It is displayed or logged.
+
+<li>
+Then execution of the script continues. If the script attempts to
+dump the expected results specified by index, the results are not
+there and the specified index is out of range. An exception is
+thrown.
+
+</ul>
+
+<p>
+So we try to get a value at the specified index. But if the value
+does not exist, the index is out of range. An exception is thrown
+AND caught. We then use "N/A" as the image.
+
+<p>
 2012-12-12. Added data and references to the Starvation
 page in HumMod Repository under data.
 
