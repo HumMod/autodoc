@@ -18,6 +18,146 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-01-04. I ran some timing tests to get basic information
+before jumping into the compression discussion. Tests involved
+6 hours of steady-state with no run in at the start. Solution
+interval was 360 minutes with display at 30 minutes. All tests
+used HumMod v2.0.39.
+
+<p>
+The first test used HumMod.EXE. Elapsed time was 3.32 seconds.
+Solution required 328 steps with 17 retries. Average step size
+was 1.1 minutes. In this environment, there is no communication
+time since the solver algorithm writes directly into the display
+buffer. Visible panel is updated (including graphs). A total of
+12 solution sets was delivered by the solver to the display buffer.
+Note that this version of HumMod uses its own numerical methods,
+so results may not compare directly to the following test.
+
+<p>
+So the take away here is that solution and panel refresh for
+this protocol requires about 277 mS per display interval with
+no communication cost. The cost of solution vs. cost of panel
+update cannot be teased out.
+
+<p>
+The second test used the Interactive Controller (v1.1.14) and
+the Model Solver (v1.0.14). The pipe polling interval was
+200 mS. Elapsed time was 5.16 seconds. Solution required 321
+steps with 16 retries. Average step size was 1.12 minutes. The
+same 12 sets were delivered by the solver through the bidirectional
+pipe. Visible panel is updated (including graphs).
+
+<p>
+A repeat took 4.95 seconds. Controller to Solver communications
+consisted of 1 message and 107 bytes. Solver to Controller
+communications consisted of 6 messages and 882610 bytes. Note
+that more than one values frame will be packed into a message
+if solution values are available in a timely fashion.
+
+<p>
+So the take away here is that solution plus communication plus
+panel update requires 430 mS per display interval. Using the
+previous results yields 277 mS for solution and display and 153
+mS for communication. The only significant communication runs
+from Solver to Controller. The communication cost consists of
+message creation, transport, and message parsing and consumption.
+Note that Controller and Solver are both running on the same
+CPU, so that time slicing is at work.
+
+<p>
+For perspective, I profiled the startup timing -- when the Model
+Controller is launched and it in turn launches the Model Solver
+and it in turn parses the model. Startup is complete when the
+Controller displays the first panel and signals 'Ready'.
+Elapsed time was 8.65 seconds. Model Solver parsing time was
+2.73 seconds (303400 tags). Model Controller parsing time was
+0.89 seconds (602 panels defined in an incoming message).
+
+<p>
+Checking the message boxes showed that Controller to Solver
+messages consisted of 3 messages and 6912 bytes. Solver to
+Controller messages consisted of 4 messages and 3209222 bytes.
+These are all one time messages used to install the Controller.
+
+<p>
+The absolute fastest that the model can run when it is in
+steady-state and after it has settled into steady-state. To
+document this, I ran for 6 hours and then an additional 6
+hours -- timing the second part of the protocol. When looking
+at these numbers, there is a very important consideration --
+after the solver receives a gofor or goto message, it does
+not wait on the pipe. It calculates away until the solution
+is complete and results (value frames) are dumped into the
+pipe (or its buffer) as they become available.
+
+<p>
+The Solver advanced the solution in 113 steps and 26 retries
+over 1.70 seconds or 142 mS per display interval. This is as
+fast as it will go. The Controller required 2.77 seconds or
+231 mS per display interval. 
+
+<p>
+I'm just going to review message traffic here to make sure.
+<br>
+Startup : 3 To Solver in 6912 Bytes. 4 to Controller in 3209222 Bytes.
+<br>
+First 6 Hours : 1 to Solver in 107 Bytes. 6 to Controller in 882610 Bytes.
+<br>
+Second 6 Hours : 1 to Solver in 107 Bytes. 6 to Controller in 884515 Bytes.
+
+<p>
+Next, I wrote a script that duplicated the 6-hour steady-state
+protocol and executed it using the Scripted Controller. Total
+elased time was 12 seconds. Script parsing time was 0.03
+seconds and model parsing time was 2.75 seconds. There were
+3 Controller to Solver messages of 259 bytes and 13 Solver to
+Controller messages of 2151794 bytes. These Controller incoming
+messages were both startup and solution messages.
+
+<p>
+Solution used 327 steps and 15 retries with an average step-size
+of 1.10 minutes. Solution elapsed time was 4.18 seconds.
+
+<p>
+Total Takeaway (based on impressions rather that hard numbers).
+Values are in mS per display interval.
+<br> Solution : 142 and up. Depends on size of interval and transients.
+<br> Calculating : 132 and up.
+<br> Waiting For Timeslice : 10. Could be faster or slower on server.
+<br> Panel Update : 1. Will be slower when maps are visible.
+<br> Messaging : 100
+<br> Message Creation : 1
+<br> Transport : 49 for file system. Might be slower over the wires,
+but might be faster since multiple processors are involved.
+<br> Parsing : 40
+<br> Polling Inefficiency : 10 but none over Internet
+
+<p>
+Remember that after decompressing the complete message must still be
+parsed. So the critical question is whether or not the time required to
+compress and decompress is more or less than the time saved in transporting
+a smaller message. An algorithm such as ZIP is great on size but terrible
+on time, so it will probably will be bad news. What is a better algorithm?
+I don't know.
+
+<p>
+The other thing that strikes me is that the rate limiting step is either
+the rate at which the server can calculate and push out packets or the
+rate at which the browser can consume the packet. For the first display
+interval in a solution, the transport time might be significant. At all
+other times, it won't be significant and the compression / decompression
+will just be an added burden.
+
+<p>
+And then another thing struck me. Windows (I think) does a delayed write
+in its file system. This means that it actually writes to memory and then
+flushes memory to the disk drive later when it is not busy. But if we
+run a pipe that gets a write and 200 mS or less does a read and then
+delete, the data never goes to disk and the system is fast. So the
+numbers that I got here could be fast and misleading.
+
+<p>
 2012-12-18. ScriptedController version bumped to 2.0.10 with
 a try-catch construct added to StorageDumper.MakeRoster().
 
