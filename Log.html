@@ -18,6 +18,111 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-01-06. Summary of 6 hour, steady-state protocol
+in various environments. Values are elapsed time in
+seconds.
+
+<ul>
+<li>
+HumMod.EXE : 3.32 Seconds.
+<li>
+Interactive Controller - Model Solver : 5.15 Seconds.
+<li>
+Scripted Controller - Model Solver : 4.18 Seconds.
+<li>
+Client - Server : 7.41 Seconds.
+<li>
+HumModWeb : 2.67 Seconds.
+</ul>
+
+<p>
+2013-01-06. One more 6 hour steady-state protocol. This
+one used HumModWeb (v1.0.1) with the source XML coming
+from HumMod v2.0.0 (I think) (266,934 tags). The
+environment was the same desktop used in the other tests,
+Windows 7 and FireFox 17.0.1.
+
+<p>
+Loading required 9.8 seconds and the 6 hours steady-state
+test was completed in 2.67 seconds. First and repeated
+simulations were all roughly the same speed.
+
+<p>
+2013-01-06. ClientController Notes
+
+<p>
+The most recent ClientController has its own application
+name, icon and registry key. The executable is smaller
+than before, suggesting that the debugging hooks have
+been removed.
+
+<p>
+ClientController.exe 1,128,960 bytes 6/28/2012 (Old)
+<br>
+ClientController.exe   324,608 bytes 1/6/2013 (Current)
+
+<p>
+We also need a config file present in the executable
+directory -- for some unknown reason.
+
+<p>
+ClientController.exe.config 1,742 bytes 6/28/2012 (Old)
+<br>
+ClientController.exe.config 1,873 bytes 1/6/2013 (Current)
+
+<p>
+To install the ClientController, go to Advanced | 
+Solver - Model.
+
+<p>
+The solver specification must point to any existing path
+on the client machine. It is parsed and then ignored. I
+made the mistake of setting it to an empty string. The
+path parser failed, threw an exception, and shut down
+the client. The only way to repair this, I think, is to
+use regedit.exe to enter the registry and edit in a
+valid entry.
+
+<p>
+The the model specification is significant since it
+points to the model XML on the server. The correct
+entry is
+
+<p>
+c:\Websites\HumMod\library\HumMod.DES
+
+<p>
+2013-01-06. I repeated the 6 hour steady-state protocol
+described below using the server - client environment and
+the same desktop as used below. HumMod version was 2.0.15.
+
+<p>
+Startup (launch client to draw chart panel) required 21
+seconds. Model solver used 2.81 seconds to parse the XML
+(274,092 tags). This suggests that the server is fast enough,
+but keep in mind that no disk writes are involved. Client
+used 3.70 seconds to parse the display message (562 panels).
+This is rather slow. Startup messaging consisted of 3
+messages in 2020 bytes from client to server and 4 messages
+in 2,827,261 bytes from server to client.
+
+<p>
+The 6 hour steady-state protocol runs in 7.41 seconds. The
+display interval with this version of HumMod is 60 minutes,
+so a total of 6 value frames were returned (1235 mS per
+frame). The solution used 190 steps and 46 retries with an
+average step size of 1.89 minutes. Messaging consisted of
+1 message in 107 bytes from client to server and 6 messages
+in 805,478 bytes from server to client.
+
+<p>
+There appears to be a large amount of network traffic involving
+the client and server EVEN when both the client and model
+solver are idle. No bytes are moved so this appears to be
+handshaking. Traffic stops when the client is closed. This
+can be monitored using Resource Monitor.
+
+<p>
 2013-01-04. I ran some timing tests to get basic information
 before jumping into the compression discussion. Tests involved
 6 hours of steady-state with no run in at the start. Solution
