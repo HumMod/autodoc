@@ -18,6 +18,14 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-01-08. In the ClientController, the pipe polling
+interval appears to be 1000 mS, as seen in Advanced |
+Pipe. This interval (which is large) could add to the
+latency. The default interval for the other modular
+components is 200 mS -- providing pretty decent
+performance.
+
+<p>
 2013-01-07. Some of the tests reported below used a
 desktop with an Internet connection. Characterized
 the desktop using Belarc Adviser. It is an HP with
