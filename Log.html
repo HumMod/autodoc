@@ -18,6 +18,57 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-01-12. 
+
+<p>
+2013-01-12. The design with ScriptedController and
+InteractiveController is to use simple schemas for
+saving and loading initial conditions and solutions.
+These two schemas were installed about a year ago
+(I'm guessing). Older files will not be compatible
+and will not parse.
+
+<p>
+These two schemas are specified in the applications
+at Docs\Schemas\... and are repeated here.
+
+<p>
+&lt;ics&gt;
+<br>
+&lt;var&gt;
+<br>
+&lt;name&gt; Name &lt;/name&gt;
+<br>
+&lt;val&gt; Value &lt;/val&gt;
+<br>
+&lt;/var&gt;
+<p>
+More vars here.
+<p>
+&lt;/ics&gt;
+
+<p>
+&lt;solution&gt;
+<br>
+&lt;var&gt;
+<br>
+&lt;name&gt; Name &lt;/name&gt;
+<br>
+&lt;val&gt; Value &lt;/val&gt;
+<p>
+More values here.
+<p>
+&lt;/var&gt;
+<p>
+More vars here.
+<p>
+&lt;/solution&gt;
+
+<p>
+Note that unstructured text is allowed before the
+opening root tag and after the closing root tag.
+
+<p>
 2013-01-08. In the ClientController, the pipe polling
 interval appears to be 1000 mS, as seen in Advanced |
 Pipe. This interval (which is large) could add to the
