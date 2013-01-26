@@ -18,7 +18,22 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
-2013-01-12. 
+2013-01-26. Bumped HumMod 2.0.38 to 2.0.39.
+
+<p>
+There were 4 occurances in 2 files where the empty
+element &lt;integer/&gt; was referred to as
+&lt;integer&gt;. Fixed.
+
+<p>
+The goal is to go 1 week in steady-state in 2000
+steps or less. But 2.0.38 would slow at about 5
+days and required about 5300 steps. This slowing
+was caused by LeftAtrium.DxMax being slightly too
+large (0.005 * Compliance) -- leading to a bit of
+jitter. So I decreased it to 0.0001 * Compliance.
+Now it uses 2207 steps (460 retries) in EXE and
+2231 steps (513 retries) in Modular.
 
 <p>
 2013-01-12. The design with ScriptedController and
