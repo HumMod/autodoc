@@ -17,6 +17,29 @@
 
 <span class='Banner'> HumMod Repository Log </span>
 
+<P>
+2013-01-28. This log described mods made to HumMod on
+2012-11-05 upgrading the fuel selector. The version was 2.0.39.
+But this version was never pushed so I've deleted the notes
+and will recreate the appropriate mods now.
+
+<p>
+2013-01-28. HumMod version bumped to 2.0.41.
+
+<p>
+HumMod previously used a linear predictor to predict fatty
+acid vs. glucose use in each of the major organs. This
+worked OK with normal deliveries but not with unusual
+deliveries -- specifically brain ketoacid use during
+startvation.
+
+<p>
+So I replaced this predictor with a non-linear one that
+is much better. The expense is that fatty acid preference
+is no longer a working parameter. There is a detailed
+reference in Structure\FuelSelector. The new predictor
+is visible at 'Organ' | Fuel for each organ.
+
 <p>
 2013-01-27. Bumped HumMod 2.0.39 to 2.0.40.
 
@@ -490,19 +513,6 @@ fully qualified and relative file names as specified by
 the <i>include</i> and <i>path</i> processing instructions.
 But it botched a relative name in the model solver's root
 directory. Fixed. My bad.
-
-<p>
-2012-11-05. HumMod v2.0.39. HumMod previously used a
-linear predictor to predict fatty acid vs. glucose use
-in each of the major organs. This worked OK with normal
-deliveries but not with unusual deliveries -- specifically
-brain ketoacid use during startvation.
-
-So I replaced this predictor with a non-linear one that
-is much better. The expense is that fatty acid preference
-is no longer working parameter. There is a detailed
-reference in Structure\FuelSelector. The new predictor
-is visible at 'Organ' | Fuel for each organ.
 
 <p>
 2012-11-03. Here is what I put in 
