@@ -18,7 +18,62 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
-2013-01-31.The command line schema for the ScriptedController
+2013-02-01. HumMod version bumped to 2.0.42.
+
+<p>
+In response to a report from Matteo Pecchiari in Milan,
+I checked out HumMod's bladder. It does accumulate protein.
+Added clinical units for [Protein] of mG/dL and calculated
+severity of proteinuria as Trace, 1+, 2+, 3+ and 4+. Structure
+is at Bladder\BladderProtein. Display is at Organs | Bladder
+using a new Proteinuria box. Severity is described in info
+box.
+
+<p>
+2013-02-01. Adding some comments on launching ScriptedController
+with the script to be run specified in the command line.
+
+<p>
+The ScriptedController plus script info can be launched using
+the Command Prompt utility (cmd.exe) or a shortcut to the
+ScriptedController configured with the requisite information.
+In both cases, the information needed is identical.
+
+<p>
+A word about Windows. Windows supplies applications with two
+items descibing the command line. The first is a string with
+the complete contents of the command line. The second is an
+array of strings with the contents of the command line parsed
+into the array. The delimiter for this parser is whitespace.
+So a path containing one or more spaces is potential trouble.
+
+<p>
+To make this work, the system parser treats all text within
+double quotes as a single item. You can see this working by
+right clicking any desktop icon and then selecting properties.
+Notice the target specification safely in double quotes.
+
+<p>
+SciptedController expects the name of the app in array element
+zero (which it ignores) and the XML script specification in
+array element one. So when using the Command Promptput or a
+shortcut put a pair of double quotes around the application
+specification and a second pair of double quotes around the
+script specification XML.
+
+<ul>
+<li> Double quotes around app and script specification.
+<li> Single quotes won't work.
+<li> File names, paths and drive letters are not case sensitive
+in Windows.
+<li> The .exe or .EXE name extension for executables is optional
+but the .Script (or whatever) name extension is required for
+scripts.
+<li> Use properly formed and valid XML as decribed below.
+</ul>
+
+<p>
+2013-01-31. The command line schema for the ScriptedController
 is
 
 <p>
