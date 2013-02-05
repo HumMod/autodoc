@@ -18,6 +18,42 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-05. HumMod version bumped to 2.0.45. Calculation
+of collecting duct and bladder urine pH has been revised
+to include the concept of a negative SID, although first
+principle calculations do not yet exist. The status of
+this is noted in Structure\AcidBase\PhUrine.REF.
+
+<p>
+Modified structure XML is in AcidBase\PhUrine.DES,
+Bladder\Bladder.DES and Nephrons\CollectingDuct\CD_Ph.DES.
+Results are visible at Organs | Bladder, Organs |
+Kidney ... Excretion | Urine and Organs | Kindey ...
+Excretion | Acid-Base.
+
+<p>
+Testing starvation (H2O ad lib only). Control after
+1 day. Starvation for 1 week.
+
+<table>
+<tr><td></td><td>Control</td><td>Starvation</td></tr>
+<tr><td>Weight</td><td>163</td><td>152</td></tr>
+<tr><td>Body H2O</td><td>42.7</td><td>39.4</td></tr>
+<tr><td>Blood [Na+]</td><td>138.6</td><td>131.1</td></tr>
+<tr><td>" [K+]</td><td>4.2</td><td>3.3</td></tr>
+<tr><td>" [Cl-]</td><td>103.8</td><td>98.6</td></tr>
+<tr><td>" [KA-]</td><td>0.7</td><td>2.8</td></tr>
+<tr><td>Urine pH</td><td>6.05</td><td>4.34</td></tr>
+<tr><td>" [KA-]</td><td>2.6</td><td>145.5</td></tr>
+<tr><td>" [NH4+]</td><td>27.1</td><td>80.5</td></tr>
+<tr><td>Blood [Glucose]</td><td>99.2</td><td>57.9</td></tr>
+<tr><td>" [Insulin]</td><td>17.8</td><td>7.6</td></tr>
+<tr><td>" [Glucagon]</td><td>69.7</td><td>230.2</td></tr>
+<tr><td>Vein pH</td><td>7.37</td><td>7.30</td></tr>
+<tr><td>Brain % Glucose</td><td>93</td><td>34</td></tr>
+</table>
+
+<p>
 2013-02-05. I informally reviewed HumMod's XML to see
 just how well-formed its XML is. Well formed in the
 XML world means that the document conforms to the
