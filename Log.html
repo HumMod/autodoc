@@ -18,6 +18,117 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-05. I informally reviewed HumMod's XML to see
+just how well-formed its XML is. Well formed in the
+XML world means that the document conforms to the
+basic rules of XML. Some edits were made.
+
+<p>
+Mixed Content. Mixed content is content within an XML
+element that contains both text and child XML elements.
+This is allowed in XML -- which is understandable since
+XML is the offspring of Standard Document Markup
+Language (SGML). As its name states, it is a document
+markup language. So all of the text (including file
+headers and occasional annotation) is mixed content
+and is well formed.
+
+<p>
+Mixed content makes XML more human readable. But it
+can drive parsers crazy when the parsers are meant for
+documents moving data from computer to computer.
+HumMod's parsers support mixed content and this is
+meant to help persons reading and editing the XML.
+
+<p>
+XML documents should not contain free text before the
+opening root (document) tag and after the closing root
+(document) tag. I edited HumMod.DES to make it
+conform.
+
+<p>
+There are 5 ASCII characters that are not allowed in
+XML element content. There characters must be represented
+by a character entity, which begins with an ampersand
+and ends with a semicolon. The characters and their
+character entities are
+
+<ul>
+<li> Less than (&lt;) : &amp;lt;
+<li> Ampersand (&amp;) : &amp;amp;
+<li> Greater Than (&gt;) : &amp;gt;
+<li> Apostrophe (&apos;) : &amp;apos;
+<li> Quotation Mark (&quot;) : &amp;quot;
+</ul>
+
+<p>
+HumMod's parsers do not honor these character entities,
+so to have well formed XML these characters or their
+entities must not appear in XML content (except inside
+XML comments).
+
+<p>
+I replaced ampersand with and in 6 display files.
+<ul>
+<li> ...\Lifestyle\Exercise\Treadmill\Summary.DES
+<li> ...\Miscellaneous\Torso\Lower\Capillaries-Lymph\Capillaries-Lymph.DES
+<li> ...\Miscellaneous\Torso\Middle\Capillaries-Lymph\Capillaries-Lymph.DES
+<li> ...\Miscellaneous\Torso\Upper\Capillaries-Lymph\Capillaries-Lymph.DES
+<li> ...\Organs\KidneyExcretion\Bicarbonate\\BicarbonateExcretion.DES
+<li> ...\Organs\KidneyExcretion\Chloride\\ChlorideExcretion.DES
+</ul>
+
+<p>
+I replaced quotation marks with dashes from 2 display files.
+<ul>
+<li> ...\Disgnosis\Chart\Symptoms.DES
+<li> ...\Organs\Bladder\Proteinuria.DES
+</ul>
+
+<p>
+2013-02-04. Added a ... Metabolism submenu to Kidney
+under organs. This makes the Organs menu a bit busy,
+but it gets some important stuff up to the top. This
+submenu will display kidney gluconeogenesis, ammonia
+formation and ketoacid metabolism -- all interrelated.
+
+<p>
+Added an Acid-Base panel to Kidney ... Excretion to
+help track acid-base status, particularly renal
+excretion. Panel is visible at Organs | Kidney ...
+Excretion | Acid-Base.
+
+<p>
+Changed the way the kidney handles ketacids to reflect
+saturable and non-saturable reabsorption. XML is at
+Structure\Nephrons\NephronKetoacids. Display at Organs |
+Kidney ... Excretion | Ketoacids.
+
+<p>
+2013-02-03. HumMod version bumped to 2.0.44.
+
+<p>
+Calculating urine pH in collecting duct and bladder.
+The general tool is located in Struncture\AcidBase\PhUrine.
+
+<p>
+ADDED LATER - this does not work correctly during starvation
+and is now under review (2013-02-05).
+
+<p>
+The strong cations used are [Na+] and [K+]. The strong
+anions used are [Cl-] and [KA-].
+
+<p>
+Bladder pH is calculated at Structure\Bladder\BladderPh.
+Acid-base status is displayed at Organs | Bladder.
+
+<p>
+Collecting duct pH is calculated at Structure\Nephrons\
+CollectingDuct\CD_Ph. Acid-base status is displayed at
+Organs | Kidney ... Excretion | Urine.
+
+<p>
 2013-02-02. HumMod version bumped to 2.0.43.
 
 <p>
