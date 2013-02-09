@@ -18,6 +18,33 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-09. Added dosing and pharmacokinetics for
+acetazolamide. Structures are at Structures\Drugs\
+Acetazolamide. Panels are visible at Interventions |
+Drugs | Acetazolamide (dosing) and Miscellaneous |
+Pharmacokinetics | Acetazolamide (kinetics). 
+
+<p>
+Fixed hemodialysis. HumMod was taking calories from the
+body in ultrafiltrate but was not taking the water lost
+from body water. So HumMod developed a sever hypothermia
+and fibrillated. Fixed XML is in Structure\BloodVolume\
+PlasmaVol.DES. Added a reference at Structure\H2O\BodyH2O.
+Thanks to David Julian.
+
+<p>
+Shivering was quantitatively incorrect -- calories produced
+was too small. Added a reference file at Structure\Heat
+named HeatShivering.REF. It cites the gold standerd reference.
+Structure XML is at Structure\Heat\HeatShivering. Panel is at
+Heat | Movement | Shivering. This needs some validation next.
+
+<p>
+2013-02-08. HumMod version bumped to 2.0.46. For the 12
+major organs, I cleaned up the look of the fuel panel.
+This is cosmetic only.
+
+<p>
 2013-02-05. HumMod version bumped to 2.0.45. Calculation
 of collecting duct and bladder urine pH has been revised
 to include the concept of a negative SID, although first
