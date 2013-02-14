@@ -18,6 +18,52 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-13. Expanded autopsy report to include both
+examination and chemistry. 
+
+<p>
+In posture control and energy and status, a constant was
+named both TILTED and TILTING, eliciting an unknown variable
+error when HumMod dies. Fixed to TILTING for all references.
+
+<p>
+2013-02-12. HumMod version bumped to 2.0.48. Put lots of
+note files on amino acids in Structure\AminoAcid\Notes.
+These are references for future expansion of amino acid
+physiology.
+
+<p>
+2013-02-10. HumMod version bumped to 2.0.47. Time for
+some cleaning up. Deleted heat panels under Miscellaneous.
+Heat now has its own top level pop-down menu. Had to update
+some paths that were pointing back to Miscellaneous.
+
+<p>
+Twelve major organs defined FAFraction (KAFraction in the
+brain) in a block named Failed that is executed when the
+organ has failed. But FAFraction was no longer declared, so
+a left-side variable is not declared error would occur when
+this block was executed. Deleted 12 defines that are no
+longer needed.
+
+<p>
+Renamed the curve FAFraction to FAUsedFraction in structures
+and panels. This is just a matter of style.
+
+<p>
+Found and deleted orphan GITract panels embedded in the Fat
+panels folder.
+
+<p>
+Note to Robert. You can advance the solution, change the
+context (the entire model is rescaled) and advance the
+solution some more. But female scaling is not yet complete
+-- some parameters are highly out of bounds -- so the
+solution struggles along rather slowly. Typical values are
+600 steps and 60 retries for 1 male day and 9000 steps and
+1200 retries for 1 female day.
+
+<p>
 2013-02-09. Added dosing and pharmacokinetics for
 acetazolamide. Structures are at Structures\Drugs\
 Acetazolamide. Panels are visible at Interventions |
