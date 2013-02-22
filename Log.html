@@ -18,6 +18,68 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-22. Connecting work to contractile protein in the left
+heart was done very poorly and always led to a loss of muscle
+(heart failure and hypotension) -- which was evident at a week
+and really evident at a month. This functionality is now shut
+down while much better physiology is being prepared. Patch is
+visible at Structure\Left and RightHeartPumping\Left and
+RightHeartPumping-ContractileProtein.
+
+<p>
+2013-02-21. Fixed an invalid empty integer element in Bladder |
+Proteinuria. I screwed this up when editing the bladder panel
+recently.
+
+<p>
+Sized the pericardium and did some work on its values and pressure
+-volume relationship. It's a bit less stiff at the normal heart
+volume. Added Pericardium Notes.TXT to Structure\Pericardium.
+
+<p>
+2013-02-20.The kidney O2 shunt has two calculations that use
+kidney blood flow in their denominator. So they throw a divide by
+zero when kidney blood flow is zero (as in v-fib). I trapped
+these for zero flow, where shunt is basically undefined. Thanks
+to Robert Hester for this. The XML is in Structure\Kidney\
+Kidney-TubuleO2.DES.
+
+<p>
+Added a pressures reference to sizing. These pressure do not
+actually size any pressures, but instead are used to size
+vascular compliance and vascular conductance during sizing
+operations. XML in Sizing-Pressure. Visible at Sizing | Pressures.
+
+<p>
+Adding sizing for the blood vessels (vascular compartments) using
+blood volume, these pressures, cardiac output and a varient of
+relevant fractions. XML is in Structures\Sizing. The parent structure
+is Sizing-BloodVessels followed by vascular structures prefixed
+with Sizing-.
+
+<ul>
+<li> Arteries
+<li> SystemicArteries
+<li> Veins
+<li> PeripheralVeins
+<li> SplanchnicVeins
+<li> RightAtrium
+<li> Lungs
+<li> PulmonaryArtery
+<li> PulmonaryCapillaries
+<li> PulmonaryVeins
+<li> LeftAtrium
+</ul>
+
+<p>
+Visible at Sizing | Blood Vessels.
+
+<p>
+2013-02-19. HumMod version bumped to 2.0.52. Edited display to
+make Circulation | Blood Vessels | Arteries | Systemic Arteries
+visible. This panel just wasn't connected.
+
+<p>
 2013-02-18. HumMod version bumped to 2.0.51. Adding mass
 balance for 20 amino acids -- 10 essential and 10 non-essential.
 First compartments are extracellular, in Structure\AminoAcid.
