@@ -18,6 +18,47 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-02-25. Installed basic cardiac hypertrophy physiology.
+Heart contractile protein mass is a function of end-systolic
+ventricular wall stress with a delay in between. XML is at
+
+<ul>
+<li> RightHeartWallStress-Systole
+<li> RightHeartPumping-ContractileProtein
+<li> LeftHeartWallStress-Systole
+<li> LeftHeartPumping-ContractileProtein
+</ul>
+
+<p>
+Panels at
+
+<ul>
+<li> Circulation | Right Heart Wall Stress | Systole
+<li> Circulation | Right Heart Pumping | Contractile Protein
+<li> Circulation | Left Heart Wall Stress | Systole
+<li> Circulation | Left Heart Pumping | Contractile Protein
+</ul>
+
+<p>
+2013-02-24. HumMod bumped to v2.0.53.
+
+<p>
+Added the math to calculate left and right ventricle wall
+stress at end-diastole and end-systole. Two top level structures
+have been created : LeftVentricleWallStress and RightVentricleWallStress
+with Mass, Diastole and Systole child structures. Visible at
+Circulation | Left Heart Wall Stress and Right Heart Wall Stress.
+
+<p>
+Added top-level structure PressureTools since we are converting
+between mmHg and kDynes/cM^2.
+
+<p>
+Removed structures LeftHeartPumping-Work and RightHeartPumping-Work
+and panels under Circulation | LeftHeartPumping and RightHeartPumping.
+That is not how the heart works (no pun).
+
+<p>
 2013-02-22. Connecting work to contractile protein in the left
 heart was done very poorly and always led to a loss of muscle
 (heart failure and hypotension) -- which was evident at a week
