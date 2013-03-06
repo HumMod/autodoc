@@ -18,8 +18,51 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
-2013-03-02. Cleaned up HumMod's root by removing stuff (Stochastic
-and Scholar) that is not going anywhere.
+2013-03-06. Sized all of the components that are needed to size
+osmolality properly. Then sized it. Cell wall osmolality now
+starts ~284 with osmoreceptor osmolality at ~ 271. The cell wall
+osmolality partitions body H2O into ECFV and ICFV, so its good to
+get off to a good start. XML is at Sizing\Sizing-Osmoles. Panel
+at Sizing | Osmoles. Sizing components are visible in other sizing
+panels.
+
+<p>
+Fixed a pitiful error in the way that osmoreceptor osmolality is
+caleculated. XML at Osmoles\OsmBody.
+
+<p>
+Calibrated the ADH secretion response to osmoreceptor osmolality.
+
+<p>
+Calibrated the ANP secretion response to RA-TMP and LA-TMP.
+
+<p>
+The goal here is to have a model that can solve for 1 week in 2000
+steps or less. 2.0.57 goes 1 week in 1600 steps, so good.
+
+<p>
+2013-03-02. HumMod bumped to v2.0.57. Added a Pressures structure
+that is initialized by Sizing-Pressures. It will be used later in
+controlling ANP secretion and maybe some other stuff.
+
+<p>
+Cleaned up HumMod's root by removing stuff (Stochastic and Scholar)
+that is not going anywhere.
+
+<p>
+Continued to revise and improve HumMod's sizing. XML is at
+<ul>
+<li> Sizing-TissueH2O.DES
+<li> Sizing-ExternalH2O.DES
+<li> Sizing-BodyH2O.DES
+<li> Sizing-ECFV.DES
+<li> Sizing-ICFV.DES
+<li> Sizing-InterstitialWater.DES
+<li> Sizing-CellH2O.DES
+</ul>
+
+<p>
+Panels are at Sizing | H2O.
 
 <p>
 2013-03-01. Bumped HumMod to v2.0.56. Added a structure named
