@@ -18,6 +18,68 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-03-13. Had some data from Musgrove using LBNP and a waist
+down plethysmograph that indicated that about 800 mL of blood
+move to the lower torso on standing. OK, so this informs HumMod's
+sequestered blood. But upon HumMod standing, stroke volume is
+basically unchanged while in reality stroke volume falls dramatically.
+What was not in HumMod was the fact that upon standing all of the
+blood below the heart gets a hydrostatic gradient that impedes
+venous return. This is equivalent to a sequestration of 1400 mL
+(1200 in veins, 200 in arteries, for now). So 2.0.58 stands rather
+nicely. I'll try to make this more anatomically correct later.
+
+<p>
+XML at SequesteredBlood\BVSeqVein.
+ 
+<p>
+2013-03-09. Moved coronary sinus, hepatic artery, hepatic vein,
+portal vein and venae cava to structure top level. Part of the
+motivation for this move is that hepatic artery is about to get
+alpha vasoconstrictor function. Moved splanchnic circulation and
+venae cava panels from Circulation | Blood Vessels to Circulation. 
+
+<p>
+Added alpha receptors to hepatic artery. XML is at Hepatic Artery,
+HepaticArtery-Flow and HepaticArtery-AlphaReceptors. Panel at
+Circulation | Splanchnic Circulation | Hepatic Artery.
+
+<p>
+2013-03-07. Blood sample now refers to OsmBody.CellWall(mOsm/L)
+which is the correct reference.
+
+<p>
+Connected ganglia to the target organs : cardiac to right and
+left heart, hepatic to liver, GI to GI tract, adrenal to adrenal
+nerve.
+
+<p>
+Expanded the content in the alpha and beta pool panels. Visible
+at Nervous System | Catechols.
+
+<p>
+2013-03-06. HumMod bumped to v2.0.58. Expanded ANP display from
+a single panel to pool and secretion panels. Visible at Hormones
+| ANP.
+
+<p>
+Putting in the infrastructure for a more detailed sympathetic
+nervous system. First in are the sympathetic ganglia.
+
+<ul>
+<li> General
+<li> Adrenal
+<li> Cardiac
+<li> Kidney
+<li> Hepatic
+<li> GI Tract
+</ul>
+
+<p>
+XML is at Nerves\Ganglia-GangliaName. Visible at Nervous System
+| Autonomic Nerves | Efferents.
+
+<p>
 2013-03-06. Sized all of the components that are needed to size
 osmolality properly. Then sized it. Cell wall osmolality now
 starts ~284 with osmoreceptor osmolality at ~ 271. The cell wall
