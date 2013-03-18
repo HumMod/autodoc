@@ -3,7 +3,7 @@
 <!--
   Created : 2012-01-19
   Author : Tom Coleman
-  Copyright : 2012-2012
+  Copyright : 2012-2013
   By : University of Missippi Medical Center
 -->
 
@@ -16,6 +16,51 @@
 <body>
 
 <span class='Banner'> HumMod Repository Log </span>
+
+<p>
+2013-03-18. Added panels under Kidney ... Nephrons to provide
+the details of the determinants of fractional Na+ reabsorption
+and K+ secretion. Panels are visible at
+
+<ul>
+<li> Proximal Tubule
+<li> Loop Of Henle
+<li> Distal Tubule
+<li> Collecting Duct
+</ul>
+
+<p>
+Added a groupbox to show the dynamics of the collecting duct
+H2O channels. Visible at Organs | KKidney ... Nephrons |
+Collecting Duct | Water.
+
+<p>
+Cleaned up the cortisol panel, giving it boxes for secretion
+and disposal. And moving mass into the pool box. Visible at
+Hormones | Cortisol.
+
+<p>
+2013-03-17. Implemented the MineralocorticoidReceptor. XML is at
+Structure\MineralocorticoidReceptor. Visible at Organs |
+Kidney ... Nephrons | Aldosterone.
+
+<p>
+2013-03-16. Installed spironolactone up to receptor dynamics.
+XML is at Drugs\Spironolactone\ several structures. Panels are
+visible at Interventions | Drugs | Spironolactone and Miscellaneous |
+Pharmacokinetics | Spironolactone.
+
+<p>
+2013-03-15. HumMod bumped to v2.0.60. Added a calculation to
+diet goal to electrically balance the electrolyte intake. XML
+in Diet\DietGoalElectrolytes. Visible at Lifestyle | Diet |
+Goal. Right now, the added HCO3- and NH4+ don't actually make
+it to the gut.
+
+<p>
+2013-03-13. HumMod bumped to v2.0.59 after correcting a small
+problem with stiffness. V2.0.58 did standing just fine but was
+too stiff for long-term simulations. V2.0.59 should do better.
 
 <p>
 2013-03-13. Had some data from Musgrove using LBNP and a waist
@@ -31,7 +76,27 @@ nicely. I'll try to make this more anatomically correct later.
 
 <p>
 XML at SequesteredBlood\BVSeqVein.
+
+<p>
+2013-03-10. Sympathetic integration now has CNS centers (sort of
+nuclei) for
  
+<ul>
+<li> General
+<li> Adrenal
+<li> Cardiac
+<li> Renal
+<li> Hepatic
+<li> Mesenteric
+</ul>
+
+<p>
+Just like the ganglia. XML is in Nerves. Visible at Nervous System
+| Autonomics | CNS. The renal and mesenteric tracts now produce
+a brisk vasoconstriction when the low pressure receptors are
+unloaded upon standing. This conforms to supporting human data from
+standing and LBNP.
+
 <p>
 2013-03-09. Moved coronary sinus, hepatic artery, hepatic vein,
 portal vein and venae cava to structure top level. Part of the
@@ -70,9 +135,9 @@ nervous system. First in are the sympathetic ganglia.
 <li> General
 <li> Adrenal
 <li> Cardiac
-<li> Kidney
+<li> Renal
 <li> Hepatic
-<li> GI Tract
+<li> Mesenteric
 </ul>
 
 <p>
