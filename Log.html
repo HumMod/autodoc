@@ -18,6 +18,32 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-03-25. HumMod held at v2.0.62. Fixed 2 instances in
+Display\Right, LeftHeartPumping\Systole\TechnicalActive
+where in inc element in a showcurve was empty. Modular
+Controller wouldn't parse a space to a number.
+
+<p>
+Note to Robert. EXE has a tab in Options called Reset |
+Restart. It has two options : 1) reset the model and solver
+to their original values and restart the solution and 2)
+move current values to initial conditions and restart
+solution.
+
+<p>
+In ScriptedController's Advanced tabbed dialog, the Reset
+panel does 1) above. But 2) above now has its own panel
+tabbed New IC's. It appears to work just fine.
+
+<p>
+The current version of InteractiveController is 1.1.14 and
+it appears to Save and Load initial conditions without
+error. What it doesn't appear to do is refresh a panel's
+graphs under certain conditions. The work around is to
+tab to a different panel and then tab back to force a
+refresh.
+
+<p>
 2013-03-23. There is a working description (with example)
 of ScriptedController's validation elements at
 Docs\Schema\Script\Model Validation Notes.DOCX.
