@@ -18,6 +18,20 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-03-28. HumMod bumped to v2.0.63. Added content to
+Lactate-Transport.REF (in Structure\Lactate) indicating that
+lactate movement in and out of organs should be both flow
+and diffusion limited. Also backward Euler integration for
+organ lactate mass may be a good choice (replacing the
+current mess -- as identified by Drew and Victoria).
+
+<p>
+All 12 organs get a lactate redo including backward Euler.
+Panels are at Organs | OrganName | Lactate. These panels
+get 2 new graphs : lactate made and lactate used. The
+technical box is gone.
+
+<p>
 2013-03-27. Implementing a message pair to request the
 roster of parameters from the ModelSolver and to get
 a roster message in response.
@@ -69,6 +83,13 @@ source code edits.
 </ul>
 
 <p>
+Sample files at ScriptedController\Docs\Scripts\
+
+<ul>
+<li> RosterParms.Script
+<li> RosterParms.LOG
+<li> RosterParms.DUMP
+</ul>
 
 <p>
 2013-03-25. HumMod held at v2.0.62. Fixed 2 instances in
