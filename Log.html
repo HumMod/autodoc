@@ -18,6 +18,22 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-04-11. Modeling arterial and venous O2 is difficult
+because O2 flows are large and O2 masses are small. This
+is stiff. I was using stable delays on both the arterial
+and venous sides. But this did not represent mass balance
+very well during O2 transients. Now using stable integrals
+on the arterial and venous sides. Very stable and mass
+balance is represented correctly.
+
+<p>
+XML is at Structure\O2\O2Artys and O2Veins. Visible at
+Respiration | O2 | Blood Arties and Veins.
+
+<p>
+2013-04-10. HumMod bumped to v2.0.65.
+
+<p>
 2013-04-10. Still HumMod v2.0.64. Autopsy executes some
 code and one of the variables (OsmBody ...) was incorrectly
 named. This was visible only when HumMod died. Fixed.
