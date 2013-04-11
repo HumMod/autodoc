@@ -18,6 +18,97 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-04-11. ScriptedController overhaul. Version
+bumped to 2.0.13. Code in AboutDialogBox.CS.
+
+<p>
+NB. Reset is no longer a valid element -- it is no
+longer required. All scripts using this element will
+fail to parse.
+
+<p>
+Changed display in IO_Load_ICs to show that these
+values are now current values. These values go across
+to the model solver as current values.
+
+<p>
+IPC_Out_Sending_ICs keeps its class name, but sends
+a sending_current_values message.
+
+<p>
+IPC_Out_Reset has been removed.
+
+<p>
+S_Reset has been removed and S_Script no longer refers
+to this class.
+
+<p>
+IPC_In_VarRoster no longer refers to IPC_Out_Reset.
+
+<p>
+Script_Reset and Work_Reset classes have been removed.
+
+<p>
+2013-04-11. InteractiveController overhaul. Version
+bumped to 1.1.15. Code in AboutDialogBox.CS.
+
+<p>
+InteractiveController no longer calls for a reset
+when loading. Code edited in StartupManager.CS.
+Classes ResetManager and IPC_Out_Reset are no longer
+needed.
+
+<p>
+A tab in the Advanced tabbed dialog implemented a
+model reset. Removed.
+
+<p>
+Changed the labels in the File menu to Save Current
+Values and Load Current Values to more accurately
+reflect what is really going on.
+
+<p>
+When current values are loaded from a file (IO_Load_ICs.CS,
+class name has not been changed) the values are sent
+to the model solver as current values and the model
+solver is not restarted. Classes Sending_ICs_Manager
+and IPC_Out_Sending_ICs have been removed.
+
+<p>
+2013-04-11. ModelSolver overhaul. Version bumped to
+1.0.16.
+
+<p>
+In Var_Base.CS, the DefaultIC property of the Var_Base
+object has been removed. AddVal now adds a value to the
+IC property.
+
+<p>
+In Var_Base_Messages.CS, the method ResetModel has been
+removed. The concept of reset is no longer supported.
+The parser loads IC values and these values are preserved.
+The RequestData() method no longer returns a DefaultIC
+image.
+
+<p>
+In SolutionManager.CS, the method Reset() has been
+removed.
+
+<p>
+The class IPC_In_Reset has been removed. This is the class
+that processed the reset message. The class S_Reset has
+been removed. This class defined the reset message schema.
+The S_SolverIn class no longer tries to build the reset
+schema into the overall messaging schema.
+
+<p>
+There were previously two messages that sent across values :
+sending_ics and sending_current_values. Sending_ics has
+been removed as values now can only come across as current.
+S_Sending_ICs.CS and IPC_In_Sending_ICs.CS have been deleted.
+The S_SolverIn class no longer looks for the IC's schema.
+
+<p>
 2013-04-11. Modeling arterial and venous O2 is difficult
 because O2 flows are large and O2 masses are small. This
 is stiff. I was using stable delays on both the arterial
