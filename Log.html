@@ -18,6 +18,41 @@
 <span class='Banner'> HumMod Repository Log </span>
 
 <p>
+2013-05-09. ScriptedController bumped to v2.0.14.
+
+<p>
+Thanks to Drew for this ticket. I wrote 2 scripts that
+verify that ScriptedController freezes on dumpsegment
+and dumpsolution when the roster is rosterall.
+
+<p>
+My bad. ScriptedController was actually running OK
+with rosterall. It was just taking an infinite amount
+of time. The dumped file is quite large (8000 vars *
+20 bytes/value * 10 values/var = 1 - 2 MB). The files
+image is constructed internally in a string.
+
+<p>
+.Net framework has two ways to represent a string :
+as a string object and as a StringBuilder object.
+String objects are immutable and must be continually
+created and distroyed when building a large string
+from small fragments. StringBuilder objects are like
+huge arrays where fragments can be dumped in at light
+speed. SciptedController can now write a segment or
+solution using rosterall at a speed that seems
+instantaneous. Check your LOG file.
+
+<p>
+Edits are in StorageDumper.CS.
+
+<p>
+2013-05-07. Scripter bumped to v2.0.0 in preparation
+for a major rewrite. Scripter is the utility that
+converts the XML version of a model to its JavaScript
+equivalent. 2013-05-08 Revision done but not pushed.
+
+<p>
 2013-04-30. HumMod bumped to v2.0.66. Corrected a math
 mis-statement that may have caused implicit algebraic
 convergence problems under severe conditions.
