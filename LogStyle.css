@@ -33,4 +33,10 @@ body
   font-weight : bold ;
 }
 
+.pageend
+{ font-family : "Comic Sans MS", "Lucida Casual", sans-serif ;
+  font-size : 18pt ;
+  font-weight : bold ;
+}
+
 /* End */
