@@ -1,76 +1,36 @@
-/* Style.CSS
+/* Style.css
 
-   Created : 2011-11-26
-   Revised : 2012-08-04
+   Created : 2014-11-15
+   Revised : 2014-11-15
    Author : Tom Coleman
-   Copyright : 2011-2012
-   By : University of Mississippi Medical Center
+   Copyright : 2013-2013
+   By : Tom Coleman
+
+   Use # for ID
+   Use . for class
 */
 
 body
-{ font-family : Arial, Helvetica, sans-serif ;
-  font-size : 12pt ;
+{ font-family: Arial, Helvetica, sans-serif ;
+  font-size: 12pt ;
 }
 
-a
-{ font-family : Arial, Helvetica, sans-serif ;
-  font-size : 12pt ;
-  color : #003399 ;
+.title
+{ font-family : "Comic Sans MS", "Lucida Casual", sans-serif ;
+  font-size : 30pt ;
+  font-weight : bold ;
 }
 
-.Indent
-{ margin-left : 20px ;
+.menu
+{ font-family : "Comic Sans MS", "Lucida Casual", sans-serif ;
+  font-size : 20pt ;
+  font-weight : bold ;
 }
 
-.Indent2X
-{ margin-left : 40px ;
-}
-
-.Table
-{ margin-left : 20px ;
-  text-align : center ;
-}
-
-td
-{ padding-top : 2px ;
-  padding-bottom : 2px ;
-  padding-left : 20px ;
-  padding-right : 20px ;
-}
-
-.Left
-{ text-align : left ;
-}
-
-.Right
-{ text-align : right ;
-}
-
-.Anchor
-{ padding-left : 0px ;
-  text-align : left ;
-}
-
-.Spacer
-{ padding-top : 10px ;
-  text-align : left ;
-}
-
-.Single
-{ padding-left : 0px ;
-  padding-top : 10px ;
-  text-align : left ;
-}
-
-pre
-{ font-family : Arial, Helvetica, sans-serif ;
-  font-size : 12pt ;
-}
-
-.Banner
-{ font-family : Arial, Helvetica, sans-serif ;
-  font-size : 16pt ;
-  color : blue ;
+.pagetitle
+{ font-family : "Comic Sans MS", "Lucida Casual", sans-serif ;
+  font-size : 24pt ;
+  font-weight : bold ;
 }
 
 /* End */

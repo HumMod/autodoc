@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+
+<!--
+   Created : 2014-11-15
+   Revised : 2014-11-15
+   Author : Tom Coleman
+   Copyright : 2013-2013
+   By : Tom Coleman
+-->
+
+<html>
+<head>
+<title> HumMod Developers Log - 2012 </title>
+<link rel='stylesheet' type='text/css' href='Style.CSS'>
+</head>
+
+<body>
+
+<span class='pagetitle'> HumMod Developers Log - 2012 </span>
+
+<p>
+2012-12-18. ScriptedController version bumped to 2.0.10 with
+a try-catch construct added to StorageDumper.MakeRoster().
+
+<p>
+ScriptedController was throwing an <i>ArgumentOutOfRangeException</i>
+on the following sequence.
+
+<ul>
+
+<li>
+ScriptedController is executing a script and asks the ModelSolver
+to change a value or to advance the solution.
+
+<li>
+But a runtime error occurs and the expected results don't come back.
+
+<li>
+Instead, a run report comes back. It is displayed or logged.
+
+<li>
+Then execution of the script continues. If the script attempts to
+dump the expected results specified by index, the results are not
+there and the specified index is out of range. An exception is
+thrown.
+
+</ul>
+
+<p>
+So we try to get a value at the specified index. But if the value
+does not exist, the index is out of range. An exception is thrown
+AND caught. We then use "N/A" as the image.
+
+<p>
+2012-12-12. Added data and references to the Starvation
+page in HumMod Repository under data.
+
+<p>
+2012-12-08. Added a page with data on posture and hemodynamics
+using data from Loring Rowell. Visible in HumMod Repository
+under Data | Posture &amp; Hemodynamics. Good references.
+
+<p>
+2012-12-07. ModelSolver.EXE has been repaired and its
+version number bumped to 1.0.14.
+
+<p>
+Thanks to Drew for pointing out this problem. ModelSolver's
+XML parser did not process relative file names correctly.
+The offending code is in PFileManager.CS. I never liked this
+code and now it has been repaired using the proper .Net
+calls.
+
+<p>
+Fully qualified file name - Complete name from drive letter
+to file extension.
+
+<br>
+Relative name - name and location of a file relative to the
+current directory.
+
+<br>
+Current directory - a directory location stored by the
+operating system. By default it is the directory holding
+the executable code.
+
+<p>
+The HumMod XML parser should be able to handle both
+fully qualified and relative file names as specified by
+the <i>include</i> and <i>path</i> processing instructions.
+But it botched a relative name in the model solver's root
+directory. Fixed. My bad.
+
+<p>
+2012-11-03. Here is what I put in 
+InsulinReceptors-Liver.REF.
+
+<p>
+<i>
+Hepatic insulin receptors can really scarf up
+the insulin. So net binding is always flow
+limited to some extent. This is very important
+when hepatic plasma flow is low.
+</i>
+
+<p>
+So HumMod uses mass balance at hepatic insulin
+uptake. XML at Structure\Insulin\InsulinReceptors-Liver.
+Visible at Hormones | Insulin | Beta Cells | Insulin
+Receptors.
+
+<p>
+2012-11-03. Insulin concentration in the pool is now
+also available in pMol/L.
+
+<p>
+2012-11-03. Broke insulin formation into separate
+synthesis and secretion panels to provide more detailed
+information. No new XML. Visible at Hormones | Insulin
+| Beta Cells and then Synthesis and Secretion.
+
+<p>
+2012-11-03. HumMod now calculates and displays [Insulin]
+at the pancreas beta cells. This concentration modulates
+insulin secretion. XML at Structure\Pancreas\Insulin.
+Visible at Organs | Pancreas | Insulin and Hormones |
+Insulin | Beta Cells | Secretion.
+
+<p>
+2012-11-03. HumMod now calculates and displays [Glucagon]
+at the pancreas alpha cells. This concentration modulates
+glucagon secretion. XML at Structure\Pancreas\Glucagon.
+Visible at Organs | Pancreas | Glucagon and Hormones |
+Glucagon | Alpha Cells.
+
+<p>
+2012-11-02. Skeletal muscle metabolism did not respond
+(at all) to changes in posture -- because the logic in
+PostureEnergy was not properly coded. My bad. Fixed.
+Thanks to Drew for documenting this one.
+
+<p>
+2012-11-02. The correct descriptor of renal alpha
+agonism is Kidney-AlphaReceptors.Activity. Activity
+normal value is 1.0. Incorrect references (parameter
+stubs) were replaced in Structure\Nephrons\ProximalTubule\PT_Na
+and Structure\Nephrons\VasaRecta. And, thanks to Drew for
+this one.
+
+<p>
+2012-11-02. HumMod v2.0.38. The correct case for the
+system constant pi is 'Pi'. Replaced 'PI' with 'Pi'
+in Structure\Orthostatics\Hydrostatics. Tilt table
+is now functional. And, thanks again  to Drew for this
+one.
+
+<p>
+2012-11-02. Total, endocrine, alpha cell, beta cell,
+delta cell, other cell and exocrine blood flow. XML
+is at Structure\Pancreas and then Pancreas-Flow. Visible
+at Organs | Pancreas | Circulation.
+
+<p>
+2012-11-02. Need a conductance scaler obtained from the
+GI tract to scale the adrenal gland and pancreas. Its
+name is Conductance_X_Normal. XML in GITract-Flow.
+Visible under Organs at GI Tract | Circulation and also
+at the Adrenal Gland and Pancreas.
+
+<p>
+2012-11-02. The hemodynamics of the portal vein, hepatic
+artery and hepatic vein are now visible at Circulation |
+Blood Vessels | Splanchnic Veins. Portal vein blood flow
+and constituents are now visible at Organs | ... Portal
+Vein.
+
+<p>
+2012-11-02. A blood chemistry consult must now be requested
+rather than being automatic. Of course, a sample is needed. 
+
+<p>
+2012-11-02. HumMod v2.0.37. Gave [Glucagon] additionalal physical
+units of pMol/L. XML in Structure\Glucagon. Visible in Hormones
+| Glucagon. 
+
+<p>
+2012-11-01. Starvation simulations indicate that additional
+precision is needed at insulin and glucagon into the portal
+circulation. I'll build this on a detailed pancreas circulatory
+system.
+
+<p>
+But to warm up, I built a detailed adrenal gland circulation.
+XML is at Structure\AdrenalGland. Visible at Organs | Adrenal
+Gland.
+
+<p>
+2012-11-01. By the second day of starvation, insulin mass
+(and [Insulin]) have gone negative. Needs some work on hepatic
+insulin receptor binding. Loss of physiology out at the edges.
+Next.
+
+<p>
+2012-11-01. Blood chemistry is now displayed as the result of
+a blood sample. There is a separate panel for blood gases.
+XML in Structure\BloodGases. Visible under Diagnosis.
+
+<p>
+2012-11-01. Some submenus seemed too deep to me and this was a
+pain. Specifically moved up GI Lumen and Nephrons to the next
+higher menu -- Organs. Show child-like dependence using elipses
+(...).
+
+<p>
+2012-10-30. Absoption of water from the gut lumen could continue
+all the way down to a negative volume. Added limits that stop
+absorption when the gut is empty. XML at Structure\GILumen and
+then GILumenH2O.
+
+<p>
+Now, as the H2O volume in the gut decreases, the osmolarity
+produced by residual fiber goes up. And if the fiber washes
+out (future work) absorption, vomitus and diarrhea stop as
+gut H2O volume approaches a small value near 0.
+
+<p>
+2012-10-30. Added functionality to bladder, including a request
+for urine analysis followed by display of results. The XML is
+located at Structure\UrineAnalysis with major edits at
+Structure\Bladder. Visible at Organs | Bladder and Diagnosis |
+Urine Analysis.
+
+<p>
+Bladder is now scaled and properly initialized.
+
+<p>
+2012-10-30. The cleanest way to model fasting and starvation is
+to go to Lifestyle | Diet | Control, select fixed intake and set
+the fixed intake value to 0. Water intake will continue. To get
+complete deprivation, add a fixed water intake of 0.
+
+<p>
+2012-10-30. HumMod v2.0.36. XML in Structure\LungVeinO2 called
+the wrong function in converting [O2] to pO2. Fixed. This error
+was not a propagating error.
+
+<p>
+2012-10-29. Repository now displays Excel workbooks as HTML, rather
+than pushing the xlsx through zoho.com.
+
+<p>
+2012-10-29. David Julian has pointed out that it is possible to
+create an exercise protocol where the subject goes until he
+fibrillates rather than just quitting. Also the toleraable
+exercise durations were way, way too long. So there were a couple
+of things wrong. Now fixed. Further details are in Structure\Exercise
+Exercise-Control.REF and Exercise-Motivation.REF.
+
+<p>
+2012-10-29. HumMod 2.0.35. CO2 dissociation submodel is installed.
+Relevant structures are located in Structure\CO2. The algorithm is
+implemented in CO2_pCO2_To_[HCO3] and CO2_[HCO3]_To_pCO2. CO2Blood
+is a wrapper for blood work.
+
+<p>
+The CO2 dissociation curve is displayed in relevant places using
+the ShowMap display object. The algorithm is presented by the [i]
+button. Blood work is displayed at Respiration | CO2 | Arteries
+and Veins. There is also a CO2 calculator on this pop down. Major
+organ CO2 dissociation is visible at Organs | 'Organ Name' | CO2.
+
+<p>
+2012-10-24. HumModRepository. The 'Log' cloud button
+on the home page is now smaller - indicating that it
+is a more minor selection than the other selections.
+
+<p>
+2012-10-24. HumModRepository. A variety of spreadsheets
+are now relevant. They are now listed and linked separately
+on the 'Normal Values' home page.
+
+<p>
+Zoho is used to display the Xcel spreadsheets. A rather
+complex URL is used. It begins with
+
+<p class='Indent'>
+  href='https//sheet.zoho.com/view.do?
+
+<p>
+And continues with
+
+<p class='Indent'>
+  url=http://hummod.org/autodoc/NormalValues/'Sheet Name'.xlsx'
+
+<p>
+2012-10-24. HumModRepository. Data. CO2Transport. This Web page
+describes a submodel of CO2 transport in blood which will be
+embedded in HumMod to get accurate values of [HCO3] as a funcion
+of pCO2 and [SID]. The model is
+
+<p class="Indent">
+[HCO3] = K * (pCO2/(p50 + pCO2))
+<br>
+K = k' * [SID]
+<br>
+p50 = 32
+
+<p>
+The previous model was linear and was fit across the lungs. So, it
+worked just great across the lungs for steady-state. But it worked
+very poorly for venous values during exercise, when pCO2 is high and
+[SID] is decreasing as a function of [Lac].
+
+<p>
+where K is a linear function of [SID]. We fit k' to the appropriate
+data sets. Then during solutions, [HCO3] is calculated as a function
+of the prevailing pCO2 and [SID].
+
+<p>
+2012-10-24. Repository. Reference Dot.png corrected to Dot.PNG.
+
+<p>
+2012-10-19. Version to 2.0.34 with addition of
+metabolic units concept to O2 uptake. Structure is
+in LungGases\MetabolicUnits (including a REF).
+
+<p>
+Variable is visible at Respiration | Gas Exchange |
+O2 Uptake.
+
+<p>
+Now specifying treadmill settings in both grade (%)
+and degrees. XML is in Exercise-Treadmill with
+an accompanying REF.
+
+<p>
+Variable is visible at Lifestyle | Exercise |
+Treadmill.
+
+<p>
+Subject must now be standing in order to use the
+treadmill.
+
+<p>
+2012-10-16. Cloned library-private to the HumMod2
+working directory to access the very first edit of
+v2.0.33. This is the classical circulatory description
+using VascularCompartments.
+
+<p>
+2012-09-13 HumMod version bumped to 2.0.33.
+
+<p>
+Added some constants to Structure\Metabolism\
+Metabolism-Tools.DES to be used in stoichiometry.
+
+<p>
+Roughed out energy dynamics for skeletal muscle
+using [ATP], [PCr] and [Pi]. XML is at Structure\
+SkeletalMuscle\SkeletalMuscle-Energy.DES and
+Structure\RespiratoryMuscle\RespiratoryMuscle-
+Energy.DES. Panels are visible at Organs |
+...Muscle | Energy.
+
+<p>
+Installed a calculator to calculate hemoglobin
+O2 content and saturation as a function of pO2.
+Influences are temperature, pH, pCO2, CO and
+[Hgb]. XML is located at Structure\Hemoglobin\
+HgbCalculator. Panel is visible at Body Fluids |
+Blood | Hemoglobin | Calculator.
+
+<p>
+2012-09-12 HumMod version bumped to 2.0.32.
+
+<p>
+First the problem -- as logged yesterday, HumMod
+produces large amounts of lactic acid during work,
+develops a fatal acidosis and fibrillates. The model
+starts going anaerobic at skeletal and respiratory
+pO2's of 20 Torr.
+
+<p>
+But there is some very good data available --
+using MRI to monitor myogloblin desaturation --
+that indicates that skeletal muscle pO2 goes
+very low (3 to 5 Torr) with only moderate workload
+and no anaerobic metabolism.
+
+<p>
+I've documented this in Structure\SkeletalMuscle\
+SkeletalMuscle-Flow.REF.
+
+<p>
+The correction was to start anaerobic metabolism
+when venous pO2 falls below 8 Torr. Note that
+venous pO2 might be a couple of Torr greater than
+cytosolic due to a large but still finite diffusing
+capacity. Corrected curves are visible in Structures\
+SkeletalMuscle\SkeletalMuscle-Flow and the comparable
+RespiratoryMuscle DES file.
+
+<p>
+2012-09-11 HumMod version bumped to 2.0.31.
+
+<p>
+First, the problem -- as pointed out by David Julian
+(thank you, David). When the daily planner was turned
+on, HumMod would die in V-Fib at about 8:30 AM on the
+first day, about 1/2 hour into exercise. The exercise
+was 50W but was massively anaerobic. HumMod stops
+bike and treadmill exercise when conditions become
+intolerable, but work continues no-matter-what. This
+allows me to shake down the model. So [Lac-] increased
+to 30+ mEq/L and HumMod fibrillated as it should.
+
+<p>
+The work session was massively anaerobic because the
+increase in cardiac output was inadequate. This was
+puzzling because HumMod can do 50W of bike with no
+trouble. BUT, HumMod is standing when doing work and is
+usually recumbent when on the bike. The problem, then,
+was that HumMod had accurate pooling when standing
+very quietly but this pooling also continued during
+muscular activity. Standing plus activity was not
+accurately modeled. My bad.
+
+<p>
+Loring Rowell has gone into excellent detail in
+Human Cardiovascular Control.
+
+<p>
+Pollact, A.A. and E.H.Wood. Venous pressure in the
+saphenous vein at the ankle in man during exercise
+and changes in posture. J.Appl.Physiol. 1:649, 1949.
+
+<p>
+There are some other references also.
+
+<p>
+Structure VenousValves replaces structure LegMusclePumping.
+Structure BVSeqVeins gets some major edits. The panel in
+orthostatics that shows sequestered blood volume in veins
+gets considerable more detail.
+
+<p>
+Note that 2.0.31 still cannot make it through one day of
+daily planner. I'll fix that tommorrow and put it in
+2.0.32.
+
+<p>
+2012-09-06 A couple of pushes had incorrect version
+numbers in the commit comments. Here is an accurate
+list of versions for this date.
+
+<br>
+ModelSolver Build : 2012-08-10 Version : 1.0.13
+<br>
+InteractiveController Build : 2012-08-10 Version : 1.1.14
+<br>
+ScriptedController Build : 2012-09-06 Version : 2.0.9
+<br>
+HumMod Edit  2012-08-09 : Version : 2.0.30
+
+<p>
+Note that I have correct some previous erroneous entries
+in this log.
+
+<p>
+2012-08-13 HumMod version will go to v2.0.32 or greater
+with a major rewrite of the basic circulatory physiology
+and applied math. More on this later.
+
+<p>
+2012-08-10 ModelSolver version bumped to v1.0.13
+with some major internal revisions. Revisions are
+not visible externally.
+
+<p>
+Class deletes : IPC_In_RestartSilent, S_RestartSilent.
+RestartManager cleaned up.
+
+<p>
+2012-08-10 InteractiveController version bumped to
+v1.1.14 with some major internal revisions. Revisions
+are not visible externally.
+
+<p>
+Class deletes : IPC_Out_RestartSilent.
+
+<p>
+2012-08-09 InteractiveController bumped to
+version v1.1.13. The numerical cells in tables
+were not formatting. Fixed.
+
+<p>
+2012-08-09 ScriptedController bumped to version
+v2.0.7. The controller gets some new elements.
+
+<p>
+skipaheadonerror - activates the skipping service.
+Will skip script elements on a runtime error until
+a skiptohereon error element is encountered.
+
+<br>
+skiptohereonerror - this is the marker mentioned
+above.
+
+<br>
+displayruntimeerrors - the default response to a
+runtime error is now to log the error details but
+to not display them. Use this element to request
+a display.
+
+<p>
+2012-08-09 HumModXML bumped to version 2.0.30.
+
+<p>
+Cleaned up dosing for thiazide, digoxin and
+midodrine. This was done partly to make sure
+that the timer variables were working correctly.
+
+<p>
+2012-08-08 ModelSolver bumped to version 1.0.12.
+NormalDist variable now returns a value from a
+population with the correct mean and standard
+deviation.
+
+<p>
+Fixed an error in the REM binary operator (this
+is the modulus operator).
+
+<p>
+Completed timer variables. Daily planner, etc.
+are now working.
+
+<p>
+2012-08-08 InteractiveController version bumped
+to v1.1.12. Fixed the time tool to correctly
+show seconds in the panel element showclock.
+
+<p>
+2012-08-08 ScriptedController version bumped to
+v2.0.8. Had a problem with variable roster and
+storage when running two scripts back-to-back.
+Fixed.
+
+<p>
+ScriptedController now automatically asks for a
+reset after the model solver has been launched
+and the model has been parsed. No need (typically)
+to put a reset in your scripts. But, if you do,
+the extra reset won't hurt anything.
+
+<p>
+2012-08-07 Attempting to standardize all of the save
+and load IC's and solutions schema, beginning with
+InteractiveController and ScriptedController.
+InteractiveController version has been bumped to
+v1.1.11 while ScriptedController version has been
+bumped to v2.0.5.
+
+<p>
+2012-08-07 HumModXML version bumped to 2.0.29.
+
+<p>
+In the Win32 environment (HumMod.EXE), radiobuttons
+must be grouped by the coder. I used the maplist
+element that defines the radiobutton labels to also
+define the members of the group. Lifestyle | Daily
+Planner | Schedule is a panel filled with radiobuttons,
+but each button knows what group it is in.
+
+<p>
+In .Net framework, all radiobuttons in a panel are
+automatically grouped into a single group. Therefore,
+in HumMod 2.0.28 and earlier, all of the radiobuttons
+in the Schedule panel have automatically be made
+members of the same group. So I gave each hour its
+own group box (which is inherited from panel). It
+fixes the problem and looks cool -- but is pretty
+ugly in EXE.
+
+<p>
+The solver sends the controller two type of communications:
+pages and messages. Pages go out at the end of a successful
+integration interval, so we don't get communications 
+related to failed steps. Messages go out immediately. But,
+up to 1.1.10, the interactive controller did not display
+the incoming message. Fixed and bumped version to 1.1.10.
+
+<p>
+2012-08-06 HumModXML version bumped to 2.0.28. Kidney
+now has cortical (outer and inner) and medullary (outer
+and inner) zones for mass, blood flow and sodium
+reabsorption. The idea that is developing is that
+EPO secretion comes predominantly from cells in the
+interstitium of the proximal tubule. Thus, we need
+some zone data to implement EPO dynamics. Zone XML
+is located at Structure\Kidney\Kidney-Zones and zones
+are visible at Organs | Kidneys | Organ | Zones.
+
+<p>
+Kidney runs metabolism off of venous pO2 now,
+rather than tubular pO2. Has a new panel in Metabolism.
+Visible at Organs | Kidney | Organ | Metabolism.
+
+<p>
+Merged Kidney-O2 into Kidney-Metabolism. Metabolism
+panel gets a more detailed O2 view. Visible at Organs |
+Kidney | Organ | Metabolism.
+
+<p>
+2012-08-04 HumModXML version bumped to 2.0.27. Kidney
+get a panel tree modification because the nephron stuff
+was buried too deep. Brought it up one level. Visible
+at Organs | Kidney | Organ or Nephrons.
+
+<p>
+HumModXML. Kidney gets a new panel showing details of
+kidney O2 physiology. Visible at Organs | Kidney.
+
+<p>
+HumModXML cleaned up the calculation and display of
+EPO secretion. The XML is at Structure \ EPO \
+EPOSecretion. The display is at Hormones | EPO - the
+secretion box.
+
+<p>
+2012-08-04 ModelSolver version bumped to v1.0.11
+after the random number generator was repaired.
+
+<p>
+The normal distribution mean has a positive bias
+-- because I was summing 7 samples and dividing
+by 6 to get the mean. Code is in Var_NormalDistribution.
+ModelSolver\Docs\Code\Model Solver Notes - Random
+Numbers has documentation and screen grabs.
+
+<p>
+2012-08-04 InteractiveController bumped to
+v1.1.9 after a repair. Controller will ask
+the solver for variable, integral, implicit
+and curve rosters. When Advanced is click, it
+makes a dialog tab for each of these rosters.
+In the Strucutes list box, it selects the first
+structure. But a model with no entries in one
+of the four roster listed above has no first
+structure to select and the controller was
+throwing an exception. Now it selects the first
+structure only when there is a first strucute
+to select.
+
+<p>
+2012-08-04 ModelSolver version bumped to v1.0.10
+after solver got two repairs.
+
+<p>
+Variable WhiteNoise had no default values
+for lower and upper limits. Now default lower
+limit is 0 and default upper limit is 1.
+
+<p>
+Variable NormalDist had no default values 
+for mean and standard deviation. Now default
+mean is 0 and default standard deviation is 1.
+
+<p>
+2012-08-04 HumModRepository. Moved the log (this
+file) up to the repository's home page. Want to
+improve access.
+
+<p>
+2012-08-03 TheValidator (v1.0.1). Added Variables
+main menu item. This menu item evokes a tabbed
+dialog that lets you browse the models variables,
+integrals, implicits and curves. May be useful after
+a validation study produces a runtime error.
+
+<p>
+Wrote and pushed a brief users guild. Available at
+Docs\UsersGuide.
+
+<p>
+2012-08-02 ModelSolver version bumped to v1.0.9.
+Repaired a small error in the message parser.
+
+<p>
+2012-08-01 Pushing a pair of simulation tools,
+TheValidator and TheBatchValidator. Will push
+brief user's guides later when they are available.
+Both utilities use the same schema and operate on
+the same XML scripts.
+
+<p>
+TheValidator is interactive. It begins with a root
+script and then lets you navigate to the validation
+studies that are of current interest, avoiding time
+consuming studies that not of interest.
+
+<p>
+TheBatchValidator begins with a root script also
+(typically the same one) and sequentially does
+all of the validation work in all of the child
+scripts. Results are emitted as HTML and pushed
+to Web site www.hummod.org/validation.
+
+<p>
+2012-07-31 The validation repo and Web site has had
+a complete makeover using a new validation tool
+called TheBatchValidator (not yet pushed, coming
+soon).
+
+<p>
+2012-07-31 ModelSolver. Bumped version number to
+v1.0.8. Added some muscle to the implicit equation
+solver and fixed an off-by-one error that I think
+was producing some annoying problems.
+
+<p>
+2012-07-25 Replacing Validator and ValidationTool
+with TheValidator, a more interactive and desktop
+oriented validation tool.
+
+<p>
+Validator and ValidationTool have been moved to
+Archives.
+
+<p>
+2012-07-22 Started Blood Chemistry | Consult. This
+service scans blood chemisty values and identifies
+values that are too high or too low. XML is at
+Structure\BloodChemistry. Visible at Diagnosis |
+Blood Chemistry | Consult.
+
+<p>
+Respiratory and skeletal muscle glycogen synthesis,
+metabolism and storage is now reported in both G
+and molar units.
+
+<p>
+Up to now, some aspects of exercise physiology have
+only been roughed out. Now I'm adding relevant detail.
+
+<p>
+SA-Node beta receptors was recalibrated to reflect a
+strong neural (vs humoral) control of heart rate.
+Documentation in Structure\Heart\SANode-BetaReceptors.REF.
+Visible at Circulation | Heart Rate | Atria.
+
+<p>
+Arterial pressure (particularly SBP) increases in exercise.
+We can expect a SBP of 170 - 180 mmHg at 200W.
+
+<p>
+Ekblom JAP 24:518-529, 1968.
+
+<p>
+This pressure increase is the result of the central
+circulation having a greater tendency to pump blood
+than the skeletal muscle has a tendency to vasodilate.
+I had too much metabolic vasodilation in skeletal
+muscle. Cut it back. Now pressure increases.
+
+<p>
+I moved the maximum tolerable lactate concentration for
+skeletal muscle up from 30 mEq/L to 40 mEq/L. This will
+benefit from additional data. 
+
+<p>
+2012-07-21 HumMod bumped version to v2.0.26. The major
+edit here was a redo of the Suga-Sagawa model for the
+right and left hearts. Transmural pressure (TMP) in
+systole now has active and passive components. The
+passive component is actually the diastolic P-V
+relationship. As contractilty is lost, the TMP gracefully
+degrades to the remaining passive component (ie. diastole).
+
+<p>
+2012-07-19 Model Solver bumped version to v1.0.7. Added
+traps for invalid power function arguments. This function
+is Math.Pow in C# and ^ binary operator in DES schema.
+
+The C# edits are in MathOperators.CS. 
+
+<p>
+2012-07-19 HumMod bumped version to v2.0.25. HumMod will
+cardiac arrest with severe acidosis. The XML is located
+at Structure\Acidosis\CardiacArrest. Visible at Trauma |
+Acidosis.
+
+<p>
+At the panel, you can choose never, chance or always.
+
+<p>
+2012-07-18 HumMod bumped version to v2.0.24. Respiratory
+muscle metabolism is now a function of alveolar ventilation.
+XML is at RespiratoryMuscle-Breathing with downstream
+calculations at RespiratoryMuscle-Metabolism. Visible at
+Organs | Respiratory Muscle | Breathing.
+
+<p>
+2012-07-18 InteractiveController bumped version to v1.1.8.
+Put menu item 'X' in the main menu. Click on X to close
+the current tabbed panel.
+
+<p>
+2012-07-17 InteractiveController. The default application
+behavior on a parsing or runtime error is that the
+application closes down. But this behavior can be overridden
+using a selection in the Advanced tabbed dialog box.
+
+<p>
+All of the graphical panel elements are now clickable,
+meaning that they expose underlying model variable values
+when clicked.
+
+<ul>
+<li> Graph
+<li> Bargraph
+<li> Map
+<li> Curve
+<li> ValueBar
+</ul>
+
+<p>
+2012-07-17 ScriptedController bumped to v2.0.4. Added the
+scripting empty element continueonerror. After this element
+is encountered in a script, runtime error details are silently
+logged and execution of the script continues. Way cool!
+
+<p>
+2012-07-16 HumMod (v2.0.23). Put a spritz of initial [HCO3-]
+into the brain to get it to start closer to steady-state.
+
+<p>
+Completely revised the respiratory center to allow it to
+see (part of) the SID in the blood. The XML is in
+RespiratoryCenter-Chemical. Visible at Respiration |
+Respiratory Center | Chemical Drive.
+
+<p>
+2012-07-16 HumMod (v2.0.22). This version has compartments
+for all lung gases with gas going in and out following
+mass balance. XML in Structure\BloodGases. Stable integrals
+were required. Visible at Respiration | Blood Gases.
+
+<p>
+Model can do breath holding. XML at Structure\BreathHolding.
+Visible at Lifestyle | Breath Holding.
+
+<p>
+2012-07-11 HumMod (v2.0.21). Lung volumes are implemented,
+but they have no function yet. Code at Lungs\LungVolumes
+and panel at Respiration | Lung Volumes.
+
+<p>
+2012-07-11 Cerebrospinal fluid panel is complete. Visible
+at Organs | Cerebrospinal Fluid.
+
+<p>
+2012-07-11 Glucose TMax in kidney is now a funcion of
+nephron count. Code and panel locations are in a log
+entry below.
+
+<p>
+2012-07-10 HumMod (v2.0.20). Added cerebrospinal fluid as
+as organ. It doesn't do anything yet but secrete and absorb,
+have a pressure (still under construction ... sorry).
+
+<p>
+2012-07-10 Put in a smooth transition in renal glucose
+reabsorption between total reabsorption and maximal
+reabsorption. Code is in Nephrons \ NephronGlucose.
+Visible at Display | Organs | Kidney | Nephrons | More |
+Glucose.
+
+<p>
+2012-07-10 Increased the TMax for Na+ a bit in distal tubule
+and collecting duct. Still looking for trusted data.
+
+<p>
+2012-07-10 Repaired quantitation in distal tubule. Had too
+large of an effect of Na+ delivery on K+ secretion. Data
+was from David Young, incidently, but I interpretted it
+carelessly.
+
+<p>
+2012-07-08 HumMod (v2.0.19). Pushing now. Insulin receptors
+are complete.
+
+Benchmarks. Stop insulin secretion. Blood levels of inulin
+fall to about 40% of control at 10 hours. Severe ketoacidosis
+at 1 day.
+
+I am now completely redoing control of respiration to get
+CSF into the model and to get acceptable metabolic and CO2
+responses.
+
+<p>
+2012-07-04 General and hepatic insulin receptors with
+general, hepatic and renal insulin degradation. Note that
+the liver sees portal vein insulin concentration. Receptors
+are visible at Hormones | Insulin | Receptors.
+
+<p>
+Insulin clearance is the sum of net liver binding, net
+general binding and renal degradation. Visible at
+Hormones | Insulin | Circulating.
+
+<p>
+Insulin's organ effects are a function of fractional
+binding.
+
+<p>
+2012-07-01 HumMod (v2.0.19). Fuel uses organ plasma flow in
+the denominator of some ratios. It also uses values derived
+from O2 use in similar denominators. So when the model is
+close to or in mortis, the organ flow or O2 use stops and
+we get a divide by zero. Trapped this condition in all
+twelve major organs.
+
+<p>
+2012-06-30 Starting to install insulin receptors.
+
+<p>
+2012-06-30 Repaired Organs | Organ Name | Fuel panel
+labels. Most said Other Tissue rather than the actual
+name of the organ.
+
+<p>
+2012-06-30 HumMod XML (v2.0.18). Added pituitary gland for
+future development. Now has total, anterior and posterior
+mass. Visible at Organs | Pituitary Gland.
+
+<p>
+2012-06-29. HumMod XML (v2.0.17) contains some small repairs
+and styling.
+
+<p>
+2012-06-28. HumMod XML (v2.0.16) allows some randomness to
+be added to any of the traits: age, height, adiposity,
+muscularity and other mass. This allows multiple instances
+to simulate a population. Visible and controlled at Context
+| Summary.
+
+<p>
+2012-06-27. Pushing SolutionBrowser (v1.0.0). There is a
+brief users guide in the documentation.
+
+<p>
+2012-06-24.Trends has been recast as SolutionBrowser with
+a new github repo and a new VS C# project.
+
+<p>
+2012-06-23. Made a small edit to InteractiveController and
+pushed. Hold down Ctrl key on launch to get to the Advanced
+dialog box without having the application attempt a full
+process.
+ 
+<p>
+2012-06-21. Bumped ScriptedController version to 2.0.3. Edited
+<roster> and <rosteradd> elements to give <var> element
+<name> and <format> child elements. Element <format> is
+optional. When not specified, values are dumped without
+formatting. Details in ScriptedController | Docs | Schema
+| Script.
+
+<p>
+2012-06-19. Bumped InteractiveController version to 1.1.6.
+Edited save solution and load solution schema to conform
+with ScriptedController (and maybe also ValidationTool and
+Validator).
+
+<p>
+2012-05-27. Resuming work on trends. 
+
+<p>
+2012-05-26. Pushed Validator v2.0.4 with some small changes
+in function and some small fixes. Also pushed the Validation
+repo with current Validator output.
+
+<p>
+2012-05-25. v2.0.2 changes the layout of a scripts results
+file to
+<br># Header
+<br># Scores
+<br># All of the rest in chronological order
+
+<p>
+2012-05-25. My bad. v2.0.0 did not have full change function.
+Fixed and pushed v2.0.1.
+
+<p>
+2012-05-25. Validator (v2.0) has been pushed and is ready
+for evaluation.
+
+<p>
+2012-05-23. Just an update here. Still working on the
+Validator(v2.0). The basic stuff is great. Adding some
+features.
+
+<p>
+2012-05-19. Totally rebuilding the Validator. Will bump
+the version number to 2.
+
+<p>
+2012-05-18. Finished ValidationTool. Pushed version 1.0.0.
+A sample script is located in Docs | Scripts.
+
+<p>
+2012-05-16. ValidationTool(v0.2.0). It parses, runs the
+solver, shows Advanced. It parses test but doesn't calculate
+the results, yet.
+
+<p>
+2012-05-16. Add general scripting schema documentation for
+the ValadationTool and the Validator. In Docs | Schema |
+Script | ... - OverviewScript.DOCX.
+
+<p>
+2012-05-15. Added folders, HTML and PNG's to the basic
+validation Web site.
+
+<p>
+2012-05-13. Validation stuff now has its own repository
+in github, named 'validation'. Like 'autodoc', this
+repository is a Web site. You get their from the HumMod
+Repository using the link 'http://hummod.github.com/validation.
+
+<p>
+The root file is the default 'index.html'.
+
+<p>
+Each model in the HumMod Repository can have its own
+validation content. Right now, only HumMod(v2.0) has validation
+content. You get to this content via Home | Models |
+HumMod (v2.0) and the Validation button.
+
+<p>
+2012-05-11. Adding classes to ValidationTool. Still not
+functional. But gaining,
+
+<p>
+2012-05-11. Creating a validation tool that is used
+in building and testing validation scripts. Called
+ValidationTool.EXE. This tool does not emit HTML and
+does not interact with the Internet. Instead, it parses
+validation scripts and displays or emits the test scores.
+When a script or scripts are judged to be useful, they
+can then be folded into a larger group or scripts that
+are used in the global validation study. ValidationTool
+runs locally in any location. I pushed a shell copy of
+the code.
+
+<p>
+2012-05-10. Removed lots of dead code from
+ScriptedController.
+
+<p>
+2012-05-09.  Revised pipe sequences in these four
+applications. Files edited were IPC_InBox.CS and
+IPC_OutBox.CS. In addition, tweaked MainWindow.CS in
+ModelSolver. Pushed all four.
+
+<p>
+InteractiveController (1.1.5)
+<br>
+ScriptedController (2.0.1)
+<br>
+ModelSolver (1.0.6)
+<br>
+Validator (1.1.3)
+
+<p>
+2012-05-09. Pushed Scripted Controller (Version 2.0.0).
+It has been lightly tested. Needs rigorous testing.
+
+<p>
+2012-05-01. The repository called HumModRepository on
+my local workstation was pushed to github to become a
+Web site biosim.github.com (www. is no loanger required).
+Then we moved the host to hummod.github.com/autodoc.
+This document is hosted in the repository be moved. So
+if there is no further traffic on this topic, all of the
+stuff at biosim.github.com will be presented at
+hummod.github.com/autodoc.
+
+<p>
+2012-03-09. The next step is a total renovation of
+the way context scales initial values.  
+
+<p>
+2012-03-09. HumMod's folder organization so far has
+been to keep context stuff in a separate folder up
+at the level of sturcture, control and display. But
+really, context stuff is all structure -- so I made
+it a subfolder under Structure. Deleted benchmarks.
+Bumped version number to 2.0.15.
+
+<p>
+2012-03-09. Two script names (presumably primary and
+sandbox) can now be specified and toggled. Visible at
+Advanced | Startup. Version to 1.1.2. 
+
+<p>
+2012-03-09. Validator wants to run a predetermined script
+at startup using information stored in the registry. But
+if you don't want this, hold down the control key when
+launching.
+
+<p>
+2012-03-09. The InteractiveController would not update an
+open panel after the user did something on another panel
+and then came to the former. Fixed. Bumped version to 1.1.4.
+
+<p>
+2012-03-07. Stripped all of the dead code out of Validator
+and started routine use. There is no documentation but
+there are plenty of scripts in the repository. v1.1.1.
+
+<p>
+2012-03-07. Totally rewrote Validator to simplify schema,
+increase flexibility and improve internal structure.
+Bumped version number to 1.1.0.
+
+<p>
+2012-03-06. Bumped version number to 1.0.2. Edited a type in
+tabbed dialog Status.
+
+<p>
+2012-03-05. Working on some improvements to Validator. Bump
+version number to 1.0.1.
+
+<p>
+2012-03-04. Validator is a simulation utility that parses and
+executes scripts that control solutions. Validator collects
+measures of prediction accuracy and emits this information as
+Web pages in the HumMod Repository. Version 1.0.0 has just
+been pushed.
+
+<p>
+Sub-folder organization is significant. Each sub-folder contains
+one script named Script.Script. Validator takes this script and
+emits an HTML version of it. Validator then executes the script
+and emits the results as HTML into Results.HTML in the same
+subfolder.
+
+<p>
+So after Validator has been run, each sub-folder contains three
+files.
+
+<p> # Script.Script (by the scipt author)
+<br> # Script.HTML (by Validator)
+<br> # Results.HTML (by Validator)
+
+<p>
+Some early results can be seen in the HumMod Repository
+under Validation.
+
+<p>
+The Validator bottom line is that Validator takes care of all
+of the Web site management. The script writer can focus solely
+on creating scripts that accurately evaluate the performance
+of the model.
+
+<p>
+2012-02-27. Changed the Settings menu item in the ModelSolver
+to Advanced and added some tabs. Making some small changes in
+ScriptedController as it is used to do validation. Added more
+tabs to advanced.
+
+<p>
+2012-02-27. Refactored the pipe in both controllers and the
+solver. Then bumped version numbers.
+
+<p> Interactive Controller (v1.1.3)
+<br> Scripted Controller (v1.1.6)
+<br> Model Solver (v1.0.5)
+
+<p>
+2012-02-26. Added elements to the ScriptedController's scripting
+schema to help accumlating, formatting and pasting to the results
+log statistics generated by the Accept, Quality and Review tests.
+The element names start with stats_. Documentation is in Docs at
+ScriptedController\Docs\Schema\Script.
+
+<p>
+2012-02-26. Added script_to_html element to ScriptedController's
+schema. This element tells the ScriptedController to take all of
+the files contributing to the current script and make HTML
+formatted copies of the files. Way cool, these copies can be
+routed directly and automatically to the HumMod repository Web
+site. A site visitor can see both the results of a script and
+the script that created the results. Repository curator (currently)
+must manually edit an index page for each of results and scripts.
+
+<p>
+2012-02-26. Bumped InteractiveController version to 1.1.5 with a
+large number of edits underway.
+
+<p>
+2012-02-25. Completed implementing the scripted controller's
+files element.
+
+<p>
+2012-02-25. Added some new elements to the scripted controller's
+scripting schema so that statistics may be calculated, accumulated
+and displayed on a local, regional or global basis. Will have
+some documentation next.
+
+<p>
+2012-02-25. Bumped version numbers due to a variety of edits.
+
+<p> Interactive Controller (v1.1.2)
+<br> Scripted Controller (v1.1.4)
+<br> Model Solver (v1.0.4)
+
+<p>
+2012-02-25. I modified the pipe a bit to tidy it up. I hope
+that I didn't foul it up.
+
+<p>
+2012-02-24. Small edits to scripted controller.
+
+<p>
+2012-02-24. Interactive controller goes to v1.1.1 with better
+implementation of the action button. Build date is now shown
+in the dialog box. Model title now comes across from the model
+solver in the large controllerinfo message. The title is then
+added to controller's title bar (at the top of the main window).
+
+<p>
+2012-02-24. Model solver now treats action button as a top-level
+asynchronous event. Responds with two new messages : actionbuttondone
+and actionbuttonfailed. Version 1.0.3.
+
+<p>
+2012-02-23. All of the basic formatting code is in place in
+ScriptedController and it is ready for use. But a large
+amount of further refinement is forthcoming
+
+<p>
+2012-02-23. Fixed ActionButton problem. The problem was in
+the ModelSolver which thought that an action button message
+was actually an action button display element. Thanks Drew.
+
+<p>
+2012-02-23. Bumped version to v1.1.3. Refactored file I/O. 
+
+<p>
+2012-02-22. ScriptedController edits are moving right along.
+
+<p>
+2012-02-22. Bumped ScriptedController to v1.1.2 as edits continue.
+
+<p>
+2012-02-22. Expanded the HumModRepository to store and display the
+scripts used in model validation.
+
+<p>
+2012-02-21. Well into final part of this redo, which is implementing
+the emit element. Emit lets a script specify the results log
+formatting as: TEXT, XML, or HTML.
+
+<p>
+2012-02-21. Cleaned up code that handles a missing startup script
+(named in command line or registry).
+
+<p>
+2012-02-21. Bumped ScriptedController to v1.1.1 as edits continue.
+
+<p>
+2012-02-20. There may have been a long standing error in getting
+startup script names out of the registry. Startup code has been
+refactored. Looks and works good.
+
+<p>
+2012-02-20. New scripting elements have been added to schema and
+to code. Documentation is up to date in Docs | Schema | Script. 
+
+<p>
+2012-02-20. Bumped ScriptedController to v1.1.0. A major remake
+is underway.
+
+<p>
+2012-02-20. Added three elements to the Scripted Controller's
+scripting schema (no coding yet, just documentation). These
+elements should be useful when we are routing Scripted
+Controller output directly to a Web site.
+
+<p>
+The new elements are
+
+<p>&lt;parent&gt; ... &lt;/parent&gt;
+<br>&lt;homepath&gt; ... &lt;/homepath&gt;
+<br>&lt;breadcrumbs&gt; ... &lt;/breadcrumbs&gt;
+
+<p>
+2012-02-20. Roughed out the model validation section in
+the HumMod Repository. Try Validation | HumMod(v2.0) |
+Initial Values ... 
+
+<p>
+2012-02-19. Following Marek's suggestion, renal efferent
+blood flow was broken down into some of its component
+parts. Details are visible at Organs | Kidney | Vascular
+Segments | Efferent Artery. 
+
+<p>
+2012-02-19. Added vascular conductance on a /G basis to :
+right heart, left heart, hepatic artery, hepatic vein,
+kidney.
+
+<p>
+2012-02-19. Bumped version to 2.0.13.
+
+<p>
+2012-02-18. Putting in all vascular conductance as a /G
+function of organ weight (ie scaled). About 1/2 done.
+
+<p>
+2012-02-18. I didn't have lactate metabolism quite right,
+and after two weeks the lactate mass in the kidney went to
+zero triggering a divide by zero in the fuel selector. I
+think that this is fixed with improved physiology actually.
+
+<p>
+2012-02-18. Bumped version to 2.0.12.
+
+<p>
+2012-02-17. Marek pointed out that I was cutting corners on
+this calculation by assuming a pulse pressure in the stroke
+volume calculation (using the Suga-Sagawa heart model). The
+rigorous calculation is now in place, using an implicit
+algebraic equation. SBP in aorta and pulmonary artery is
+defined by the implicit. Stoke volume is calculated and used
+to calculate the end value of SBP. The calculation crosses
+several structures, but it should be a very benign calculation.
+
+<p>
+2012-02-17. Values for left and right side stenosis and regurg
+are now in groupboxes in the left and right heart pumping
+panels.
+
+<p>
+2012-02-17. Code and panels are now installed in all 12 major
+organs for the new fuel selector.
+
+<p>
+2012-02-16. Starting a data section in HumMod repository for
+dietary sodium intake. Will use this data later for model
+validation.
+
+<p>
+2012-02-15. Modified the Model Solver so that it can return
+the model's title when requested. The Scripted Controller can
+use this information when doing validations. The incoming
+message is &lt;requesttitle/&gt; and the outgoing message is
+&lt;title&gt; Title &lt;/title&gt;.
+
+<p>
+The title contains the model's version number.
+
+<p>
+Bumped the Model Solver's version number to 1.0.1.
+
+<p>
+2012-02-14. I created a new, way cool fuel selector. It is
+initially installed in other tissues.
+
+<p>
+2012-02-14. There is now water vapor in inspired air. The
+calculation is based on relative humidity. There is also a
+water vapor gas tank. Air is humidified in the bronchi
+(added groupbox) and insensible loss is calculated using
+the amount of H2O added. This advance was suggested by
+Drew. 
+
+<p>
+2012-02-14. Bumped version to 2.0.11.
+
+<p>
+2012-02-13. The big increase in arterial pO2 at the start of
+exercise is gone, probably because cardiac output is increasing
+more accurately.
+
+<p>
+2012-02-13. CO2 balance is now calculated in detail, including
+renal bicarb excretion (suggested by Marek). Results are
+displayed in a panel at Respiration | CO2 | Balance.
+
+<p>
+2012-02-13. Hunger is now a function of [Glucose] and
+[Leptin].
+
+<p>
+2012-02-13. Redid mass balance and thermodynamics in GI
+lumen.
+
+<p>
+2012-02-13. Bumped version to 2.0.10.
+
+<p>
+2012-02-12. Expanded the Lifestyle menu Diet to include
+Hunger | Thirst and Control. Temperature of ingested food
+and water may now be specified.
+
+<p>
+2012-02-12. Bumped version number to 2.0.9.
+
+<p>
+2012-02-11. Replaced the numerical methods in the pulmonary
+circulation with a better way to do the hemodynbamics. I like
+the results.
+
+<p>
+2012-02-11. Rescaled initial plasma protein to get an initial
+COP of 28 mmHg. COP was starting at 26, which caused some
+plasma leak into the IFV. Then scaled interstitial protein
+for the first time to get an initial COP of around 8 mmHg.
+
+<p>
+2012-02-11.Added an Energy section, with Energy-Stores and
+Energy-Tools structures. The first idea here is to calculated
+and display total energy stored in the body, including lipid
+and glycogen. Panel is visible as Energy Stores on the
+Metabolism menu.
+
+<p>
+2012-02-11. Bumped version to 2.0.8.
+
+<p>
+2012-02-10. VascularCompartments keep their name in structures,
+but are displayed under Circulation as Blood Vessels. Then in
+the Blood Vessels menu, there is a Great Veins menu selection.
+It shows panels for Superior Vena Cava, Coronary Sinus and
+Inferior Vena cava.
+
+<p>
+2012-02-10. Revised Circulation | OrganFlow to prepare for
+a superior and inferior vena cava. Right and left hearts now
+drain into the right atrium through the coronary sinus, as
+recommended by Marek.
+
+<p>
+2012-02-10. Bumped version to 2.0.7.
+
+<p>
+2012-02-09. Fixed middle and lower torso water problem as
+reported by both Marek and Radu.
+
+<p>
+2012-02-09. Add lots of new pages to the Normal Values Web
+site.
+
+<p>
+2012-02-08.Adding spreadsheet sheets and Web pages to Normal
+Values in HumModRepository. 
+
+<p>
+2012-02-08. Cleaned up the layout in respiratory muscle size.
+There was groupbox overlap.
+
+<p>
+2012-02-06. The idea right now is to put a lot of function
+into a spreadsheet so that model scaling becomes algorithmic.
+So far, so good. Added the basic building blocks like organ
+mass and organ blood flow. The tougher stuff will come
+later.
+
+<p>
+2012-02-05. Redesigned the Normal Values section of the
+HumModRepository and started adding pages.
+
+<br> General - Organ Mass
+<br> General - Gender
+<br> General - Blood Pressures
+<br> General - Blood Flow
+
+<p>
+2012-02-04. Added major new section to HumModRepository titled
+Normal Values with subsections Male 37 Years and Female 37 Years.
+
+<p>
+2012-02-04. Bumped version number to 2.0.6.
+
+<p>
+2012-02-03. Increased the initial CO2 mass in the brain a little
+to get a better starting brain pH.
+
+<p>
+2012-02-03. Changed the name of BloodPh structure to BloodPhValues. 
+
+<p>
+2012-02-03. Add groupbox that announces gender at gender specific
+organs : ovaries, uterus, testes. 
+
+<p>
+2012-02-03. Removed stimulators menu item and panel from Intervention.
+Model had a couple of neural stimulators but I'm switching to clamps
+to have consistency across the model.
+
+<p>
+2012-02-03. In menus and panels, RHPumping goes to RightHeartPumping,
+LHPumping goes to LeftHeartPumping and Contractility goes to
+HeartStrength. Left Heart and Right Heart Heart Strength, Contractile
+Protein and Work get group boxes  -- in one case to separate
+radiobuttons and in all cases to improve the look.
+
+<p>
+2012-02-03. Arterial hemorrhage can now be fixed rate or pressure
+driven. Panel is under Trauma.
+
+<p>
+2012-02-03. Bumped version number to 2.0.5.
+
+
+<p>
+2012-02-02. Modeled coronary sinus. Variables are 
+
+<p>
+2012-02-02. Added posture energy. The code is in PostureEnergy.
+The panel is under Miscellaneous | Orthostasis.
+
+<p>
+2012-02-02. Added heart mechanoreceptors code and panels at
+autonomics afferents and autonomics CNS. Tidied up vagus nerve.
+
+<p>
+2012-02-02. Bumped version number to 2.0.4.
+
+<p>
+2012-02-01. Removed SequesteredBV from the Nerves | Autonomics |
+Efferents menu. Installed Alpha Receptors menu item at Miscellaneous 
+Orthostatics | Sequestered Blood. Added a panel. Edited sequestered
+blood in arteries and veins to show effect of alpha agonist on
+pressure-volume relationship.
+
+<p>
+2012-02-01. Renamed the SympsChemo structure to ChemoreceptorsCNS.
+Then wrote the code and panel for the CNS processing of
+chemoreceptor afferent nerve activity.
+
+<p>
+2012-02-01. Added code and panel for Cushing response.
+
+<p>
+2012-02-01. Added code and panel for CNS trophic factor.
+
+<p>
+2012-02-01. Bumped version number to 2.0.3.
+
+<p>
+2012-01-31. Edited code, added panels and boxes for afferent
+autonomic nerves and central integration of the metaboreflex.
+Also fleshed out its effect on the respiratory center.
+
+<p>
+Completing and redoing chemoreceptors.
+
+<p>
+2012-01-31. Bumped version number to 2.0.2.
+
+<p>
+2012-01-30. Added a data set to the HumModRepository. It
+is visible at Data | Acid-Base | Ketoacidosis.
+
+<p>
+2012-01-29. Two structures were added under Structures \
+Morphology. They are Volume.DES and Density.DES. These
+structures calculate the volume and the density of the
+body.
+
+<p>
+Then Display\Diagnosis was edited to replace Morphology
+menu item with a Size menu. The Size panels show morphology,
+body mass, body volume and body density in detail.
+
+<p>
+2012-01-29. Added group boxes and tidied up panels for
+
+<p class='Indent'>
+Display\Hormones\CRF\...
+
+<br>
+Display\Hormones\Cortisol\...
+
+<br>
+Display\Hormones\PTH\...
+
+<br>
+Display\Hormones\Vitamin D\... 4 Panels.
+
+<p>
+2012-01-29. Added tissue details to Pancreas. Details are
+visible in Organs | More | Pancreas.
+
+<p>
+2012-01-29. Added tissue details to Adrenal Gland. Details are
+visible in Organs | More | Adrenal Gland.
+
+<p>
+2012-01-29. Bumped HumMod XML version number to 2.0.1. Plan to
+bump daily now with all of the edits going in.
+
+<p>
+2012-01-28. With the Win32 library (HumMod.EXE), the programmer
+must group the radiobuttons into functional groups. With C# and
+WinForms, all of the radiobuttons with the same parent are
+considered to be in the same group. I had some panels with more
+than one group of radiobuttons on the surface. Parenthood was
+clarified by putting groups of buttons in appropriate group
+boxes. Panels that were edited :
+
+<p class='Indent'>
+Display\Hormones\ACTH\...
+
+<br>
+Display\Hormones\Calcitonin\...
+
+<br>
+Display\Hormones\Cortisol\...
+
+<p>
+More panel edits to follow.
+
+<p>
+2012-01-28. Installed placeholder folders and files for adrenal
+gland and pancreas. Organ weights are visible at <i>Organs</i>
+| <i>More</i>. Folders and files created :
+
+<p class='Indent'>
+Structure\AdrenalGland\...
+
+<br>
+Structure\Pancreas\...
+
+<br>
+Display\Tree\Organs\More\AdrenalGland.DES
+
+<br>
+Display\Tree\Organs\More\Pancreas.DES
+
+<br>
+Display\Organs\More\AdrenalGland\...
+
+
+<br>
+Display\Organs\More\Pancreas\...
+
+<p>
+2012-01-28. Thanks to Drew Pruett for this fix. And also Marek. Renin
+flux between free renin and granules had derivative signs reversed,
+which violated conservation of mass and caused big problems in many
+simulations after time had advanced about a week. Files edited :
+
+<p class='Indent'>
+Structure\ReninGranules.DES
+
+<br>
+Structure\ReninFree.DES
+
+<br>
+Structure\Renin.DES
+
+<br>
+Display\Hormones\Renin\Kidney\Granules.DES
+
+<br>
+Display\Hormones\Renin\Kidney\Free.DES
+
+<p>
+2012-01-27. To get solution control and display information from
+the model solver, the model controller sends a <i>requestcontrollerinfo/</i>
+empty message. The controller has a response that was prepared during
+model parsing and replies with a <i>controllerinfo</i> ...
+<i>/controllerinfo</i> message wrapped around the info.
+
+<p>
+2012-01-27. You can edit the content for the <i>hidewindow</i>
+element below to <i>True</i> to hide the model solver's main
+window. Generally, Windows won't let you hide an application's
+main window, but you can minimize and not show it in the task
+bar to make it completely disappear.
+
+<p class='Indent'>
+WindowState = FormWindowState.Minimized ;
+
+<br>
+ShowInTaskbar = false ;
+
+<p>
+If there is a messup, use the task manager to mop up. Note that the
+only way to get the window back is to edit the INI file back to
+<i>False</i>.
+
+<p>
+2012-01-27. The model solver uses an INI file in place of Windows
+registry.
+
+<code>
+<P>&lt;ini&gt;
+  <p class='Indent'> &lt;windowtop&gt; 136 &lt;/windowtop&gt;
+  <br> &lt;windowleft&gt; 776 &lt;/windowleft&gt;
+  <br> &lt;windowhigh&gt; 174 &lt;/windowhigh&gt;
+  <br> &lt;windowwide&gt; 341 &lt;/windowwide&gt;
+  <br> &lt;windowstate&gt; 0 &lt;/windowstate&gt;
+  <br> &lt;pipeinterval&gt; 200 &lt;/pipeinterval&gt;
+  <br> &lt;hidewindow&gt; False &lt;/hidewindow&gt;
+<p>&lt;/ini&gt;
+</code>
+
+<p>
+2012-01-27. Model controllers launch the model solver and pass the model
+name and location in using the command line. On the desktop it might be
+possible to use the defaults by putting the model controller, model
+solver and model root file all in the same folder.
+
+<p>
+But a better idea might be to specify the model solver and model using
+the model controller's <i>Advanced</i> menu selection.
+
+<p>
+<img src='DialogShowingSolverAndModel.PNG'>
+
+<p>
+The defaults are
+
+<p class='Indent'>
+Solver : Model Solver.exe
+
+<br>
+Model : HumMod.DES
+
+<p>
+2012-01-27. The Model Solver now parses the entire model and tucks
+information that might be needed by the model controller into a cache.
+
+<p>
+2012-01-27. The development and use of Builder and BuilderXML has been
+discontinued. Repository content has been moved to the Archives repo and
+the Builder and BuilderXML repo's have been deleted.
+
+<p>
+2012-01-26. I created separate documentation sections in HumModRepository
+for HumMod(1_6) release and HumMod(2_0) being developed.
+
+<br>
+<img src='ReleaseVersions.PNG'>
+
+<p>
+2012-01-19. Created this log to record the edits applied to HumMod's XML
+files. T.C.
+
+</body>
+</html>
