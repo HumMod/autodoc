@@ -18,8 +18,31 @@
 
 <span class='pagetitle'> HumMod Developers Log - 2014 </span>
 
+
+
 <p>
 2014-01-15. Replaced the HumMod Repository with this Web site.
+
+<p>
+2014-1-8 (36e0c3b) I'm trying to speed up the daily planner for a couple of reasons.  Primarily, for chronic simulations, no daily planner equals constant bed rest, which I view as a physiological insult.  We don't use daily planner for a couple of reasons: one is that it is slower, and the second involves the vagaries of parameterizing a model that has no steady state.  I'm attacking the "slower" excuse here.  We put a delay in DietFeeding on Fraction.  Fraction controls the amount of sustenance entering the body at a given minute; when DP is off, its is (totalintake/1440); when dp is on, with n meals of length k, it is (totalintake/(n*k)).  Setting up these old values as targets and putting the system on a delay with 4 minute time constant, we smooth the inifinite derivatives to a more manageable size and shrink the System.Dx values from ~E-13 as feeding commences to a much more reasonable ~E-3.  Additionally, the ReninSynthesis re-parameterization as an algebraic logistic function was implemented, and was extended to ReninSecretion
+
+<p>
+2014-1-8 (2aa703a)(People) First order of business was to correct a few minor errors in the Thiazide forgetfulness implementation (pill number, control requests, and spacing in the display).  Minor shifts in parameterizations of basic Na reabsorption in the distal tubule and proximal tubule sensitivity to sympathetic activation were considered.  Renin synthesis SympsEffect was reparameterized as an algebraic logistic function rather than an exponential one; the purpose is to simplify interpretation of the parameters as physiological values without having to resort to asymptotics.  The reparameterization should be implemented in the master branch as well, but has not been yet.
+
+<p>
+2014-1-6 (c791bd2) We added a right shift token to CD_Na.ANPOnFract to simulate desensitivity of the collecting duct to ANP.  
+
+<p>
+2014-1-3 (85f7bfb) This commit involved several minor changes.  The first was that CTZ dosing was set in step sizes of 250 mg before, and UpToDate uses 25.0 mg pill sizes.  This was corrected.  Secondly, in GasTanks.DES, it was possible to have 200% air content by turning O2 and N2 both up to 100%.  When a user wished to move to 100% O2 inspired, he/she had to remember to turn N2 off.  We simplified this by making N2 the complement of all other inspired gases, defining N2(%)=100-...O2(%)... .  Thirdly, an error was noted in the curve Thyroid.Effect: the slope at the operating point was 10-fold larger than it should have been, causing an extreme kink in the spline.  This was corrected.  Finally, constitutive tokens (vertical shifts, default value = 0) were added to Sympathetics-General, Sympathetics-Cardiac, and Sympathetics-Hepatic.  These are intended to test the primary effects of unstoppable nervous activation to theses beds, especialy with respect to hypertension.
+
+<p>
+2014-1-2 (de5e10) Someone asked if we could install "forgetfullness" in the drug dosing regimen.  This is the implementation as tested in Chlorothiazide (CTZ).  We have added three request levels to the CTZ oral dose menu: "(2) when I have it","(3) When I remember it", and "(4) When I have it and remember it."  When CTZ daily dose is turned on, a number of pills is prescribed.  In types (2) and (4), if no pills are left in the prescription, the patient will not take his dose.  Pills can be refilled via the "Renew Prescription" action button.  This is of economic/social importance, the point being that in a scripted population study, the effect of economic hardship on health can be in some way modeled.  The "When I remember it" token is handled differently: a likelihood is assigned of a patient remebering his pill, and at dose time, a random (whitenoise) variable is tested against the likelihood to determine dose status.  The application of this tool is similar to that described above.  Toke (4) utilizes these tests together.
+
+<p>
+2014-1-1 (b7cb652) We are inserting sensitivity tokens for beta receptors on SA-Node.Rate.  This affects the susceptibility of the heart to humoral stimulation. Additionally, we have added a ChemoConstitutive parameter (default 0) allowing vertical shifts of the chemoreceptor nerve activity rate (think leaking ion channel).  As a minor feature, I altered the DxMax in BVSeqArtys to be dependent on Change.  This could be a mistake, and might be undone at a future time point.
+
+<p>
+2014-1-1. This will iniate the description of a number of changes that are meant to allow scripted control of parameters on a more dynamic basis.  The end goal is to introduce adaptivity in each aspect of HumMod in which adaptation occurs physiologically, e.g. Beta-1 receptor expression in response to chronic overstimulation.  This will require (at some future point) replacement of <curve> elements with algebraic expressions whose coefficients can be manipulated after parse.  While we are researching mechanistic bases for some of these changes, external concerns require that we investigate the effect of parameter changes on various aspects of HumMod's performance.  This will be accomplished by inserting sensitivity tokens, right/left shift tokens, and "constitutive" tokens (enabling vertical shifts).  These are not meant to be a long term solution, but provide proof-of-principle of the robustness of the physiological dynamics implicit to the mathematical structure of the model.  -DP 
 
 
 <p>
