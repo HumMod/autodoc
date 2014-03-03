@@ -2,7 +2,7 @@
 
 <!--
    Created : 2013-11-15
-   Revised : 2014-02-26
+   Revised : 2014-03-03
    Author : Tom Coleman
    Copyright : 2013-2014
    By : Tom Coleman
@@ -17,6 +17,45 @@
 <body>
 
 <span class='pagetitle'> HumMod Developers Log - 2014 </span>
+
+<p>
+2014-03-03. Pushing HumMod (v3.0.2).
+
+<p>
+2014-03-03. EPO secretion now has an induction delay
+(trying a tau of 20 hours). Peter Abbrecht's data
+shows a peak at day 2 at altitude. Code at Structure \
+EPO-Secretion.DES. Visible at Display \ Hormones \ EPO
+\ Secretion.
+
+
+<p>
+2014-03-03. There is scant data, but the EPO response
+to altitute suggests that renal O2 shunt is flow
+limited (new code) rather than diffusion limited (old
+code). Code at Structure \ Kidney-TubuleO2.DES. Visible
+at Display \ Organs \ Kidney \ TubuleO2.DES.
+
+
+<p>
+2014-03-03. Physiology notes and references placed at
+Structure \ EPO \ EPO.TXT.
+
+<p>
+2014-03-01. Corrected an error in the calculation of
+kidney tubule pO2. The old way had tubule pO2 equal
+to a function of arterial O2 content, blood flow and
+shunt without consideration of tubule O2 use -- my
+bad. The new way has tubule pO2 a function of arterial
+O2 content, blood flow, shunt and tubule O2 use. This
+requires two, nested implicits. Code at Structure \
+Kidney-TubuleO2.DES.
+
+<p>
+XML parser does not have an implicit stack and therefore
+does not accept two implicits nested in a single math
+block. The nested implicit must be placed in a separate
+block and called.
 
 <p>
 2014-02-26. Pushed up HumMod (v3.0.1). This version has structure
