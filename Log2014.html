@@ -18,6 +18,26 @@
 
 <span class='pagetitle'> HumMod Developers Log - 2014 </span>
 
+
+<p>
+	2014-11-5: Minor corrections in metabolism.  The original conversion was incomplete and these factors were missed.
+</p>
+
+<p>
+	2014-10-26: Increased central sympathetic outflow was validated as an instigator of hypertension, primarily through its action on renal nerves (and through them, renin) and cardiac sympathetics.  The model has not been scoped for linking this outflow hypertension to apnea, but the thought is there.
+</p>
+<p>
+	2014-10-22:  The curve elements were refit to match the changes in flows brought about by the split kidneys.  Additionally, some curves were replaced by algebraic expressions to allow population sampling of parameters to occur.  The process was as follows: generate 10-20 points on the spline curve element and use mathematica to construct an interpolation of those values.  This was then fit to a logistic or sigmoidial equation, taking the best possible fit in each case to determine which functional expression would be used.  Curves so replaced are: ANPSecretion, Left/RightReninSecretion, Left/RightReninSynthesis.
+</p>
+<p>
+	2014-10-21:  Altered the air supply to match changes in master.  In the new setting, changes in O2, CO, or CO2 inhalation cause reflex changes in N2 inhalation to prevent user error.
+
+</p>
+
+<p> 
+	2014-10-16: Beginning to split the kidneys.  Multiple new files will be introduced.  Because the display references "Nephrons" and "Kidney" structures extensively, those structures will overall be left in place as integrators, but the lifting will be done in LeftNephrons, LeftKidney, etc.  The display will be amended to show left and right on the same graph, and to use table elements instead of showval elements.  All magnitudes that are not multipliers are split roughly 55%/45% left/right, reflecting the natural anatomic reality.  This leads to differences in absolute flows, renin secretion, etc.  
+</p>
+
 <p>
 2014-03-03. Pushing HumMod (v3.0.2).
 
